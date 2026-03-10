@@ -1,7 +1,8 @@
-#################
-# Add fastfetch #
-#################
+#############
+# Add fetch #
+#############
 fastfetch
+# nitch
 
 
 
@@ -23,9 +24,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
-####################
-### Key bindings ###
-####################
 
 
 #####################
@@ -103,18 +101,32 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+
+#Custom Escape keybind for the zsh-vi-mode plugin -> Disabled for the time being
+#  function zvm_config() {
+#    ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+#    ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+#  }
+
+
+
+
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux zsh-autosuggestions zsh-syntax-highlighting sudo)
+plugins=(fzf-tab git archlinux zsh-autosuggestions zsh-syntax-highlighting sudo)
 
+# Disabled plugins (zsh-vi-mode)
 
 ####################
 # Source oh-my-zsh #
 ####################
-
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -137,6 +149,25 @@ EDITOR='nvim'
 
 # JR Set fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# Default file search using fzf
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
+# Fuzzy find all files and subdirectories of the CWD, and output the selection to STDOUT
+export FZF_CONTROL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+
+# Fuzzy find all subdirectories of the working directory, and run the command “cd” with the output as argument
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
+
+# Custom fzf preview-window
+# export FZF_DEFAULT_OPTS='
+# --height 40%
+# --layout=reverse
+# --border
+# --preview "bat --style=numbers --color=always --line-range :500 {}"
+# --preview-window right:60%
+# '
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -255,3 +286,40 @@ eval "$(zoxide init --cmd cd zsh)"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+
+
+
+####################
+### Key bindings ###
+####################
+bindkey '^y' autosuggest-accept
+bindkey '^ ' autosuggest-accept
+# Custom Escape keybinding for the zsh-vi-mode plugin
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+
+###########################
+# Prompt history settings #
+###########################
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+
+
+######################
+# Completion styling #
+######################
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
