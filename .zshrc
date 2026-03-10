@@ -87,7 +87,8 @@ alias bd='cd "$OLDPWD"'
 # eza (better ls)
 alias ls='eza --icons'
 alias lsd='eza --icons --group-directories-first' # long listing
-alias lt='eza --tree --icons' # tree view
+alias lt='eza --tree --icons level=2' # tree view
+alias lta='eza --tree --icons' # tree view
 alias ll='eza -lah --color-scale=size --color-scale-mode=gradient --icons --group-directories-first' # long listing
 alias lf='eza -lah --only-files' # files only
 alias ld='eza -lah --only-dirs' # directories only
@@ -132,13 +133,10 @@ eval "$(zoxide init --cmd cd zsh)"
 ##############
 # Source fzf #
 ##############
-# Set fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-# Default file search using fzf
+
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-# Fuzzy find all files and subdirectories of the CWD, and output the selection to STDOUT
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# Fuzzy find all subdirectories of the working directory, and run the command “cd” with the output as argument
 export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 # Add bat as default preview
 # export FZF_DEFAULT_OPTS='--preview "bat --color=always --style=numbers --line-range=:500 {}"'
@@ -158,6 +156,33 @@ else
   bat --color=always --style=numbers --line-range=:500 {} 2>/dev/null || file {};
 fi
 "'
+
+export FZF_DEFAULT_OPTS='
+--height 80%
+--layout=reverse
+--border
+--preview-window=right:60%:wrap
+--bind ctrl-/:toggle-preview
+--bind ctrl-d:preview-half-page-down
+--bind ctrl-u:preview-half-page-up
+--preview "~/.config/fzf/preview.sh {}"
+--highlight-line
+--color=bg+:#2d3f76
+--color=bg:#1e2030
+--color=border:#589ed7
+--color=fg:#c8d3f5
+--color=gutter:#1e2030
+--color=header:#ff966c
+--color=hl+:#65bcff
+--color=hl:#65bcff
+--color=info:#545c7e
+--color=marker:#ff007c
+--color=pointer:#ff007c
+--color=prompt:#65bcff
+--color=query:#c8d3f5:regular
+--color=scrollbar:#589ed7
+--color=separator:#ff966c
+--color=spinner:#ff007c'
 
 
 #################
@@ -211,3 +236,13 @@ source /usr/share/wikiman/widgets/widget.zsh
 ##############
 # bat config #
 ##############
+############
+# the fuck #
+############
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
+
+#############################
+# oh-my-zsh auto-correction #
+#############################
+# ENABLE_CORRECTION="false"
