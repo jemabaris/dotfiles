@@ -140,6 +140,24 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Fuzzy find all subdirectories of the working directory, and run the command “cd” with the output as argument
 export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+# Add bat as default preview
+# export FZF_DEFAULT_OPTS='--preview "bat --color=always --style=numbers --line-range=:500 {}"'
+
+export FZF_DEFAULT_OPTS='
+--height 80%
+--layout=reverse
+--border
+--preview-window=right:60%:wrap
+--bind ctrl-/:toggle-preview
+--bind ctrl-d:preview-half-page-down
+--bind ctrl-u:preview-half-page-up
+--preview "
+if [ -d {} ]; then
+  eza --tree --level=2 --color=always {};
+else
+  bat --color=always --style=numbers --line-range=:500 {} 2>/dev/null || file {};
+fi
+"'
 
 
 #################
@@ -188,3 +206,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons --color=always $realpat
 # Source Wikiman #
 ##################
 source /usr/share/wikiman/widgets/widget.zsh
+
+
+##############
+# bat config #
+##############
