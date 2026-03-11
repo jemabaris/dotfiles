@@ -87,7 +87,7 @@ alias bd='cd "$OLDPWD"'
 # eza (better ls)
 alias ls='eza --icons'
 alias lsd='eza --icons --group-directories-first' # long listing
-alias lt='eza --tree --icons level=2' # tree view
+alias lt='eza --tree --icons --level=2' # tree view
 alias lta='eza --tree --icons' # tree view
 alias ll='eza -lah --color-scale=size --color-scale-mode=gradient --icons --group-directories-first' # long listing
 alias lf='eza -lah --only-files' # files only
