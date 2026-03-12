@@ -95,6 +95,8 @@ alias ld='eza -lah --only-dirs' # directories only
 alias lS='eza -lah --sort=size --color-scale=size --color-scale-mode=gradient --icons --group-directories-first' # sorted by size
 alias lg='eza -lah --git --icons' # git-aware listing # git-aware listing
 
+# Alias the lf (list files) TUI file manager to lifi to avoid conflicts with lf alias for eza
+alias lifi='\lf'
 # Special ls Aliases
 alias ln='eza -lah --sort=modified --reverse --icons' # show newest files first
 alias lb='eza -lah --sort=size --icons' # show biggest files
@@ -236,6 +238,8 @@ source /usr/share/wikiman/widgets/widget.zsh
 ##############
 # bat config #
 ##############
+
+
 ############
 # the fuck #
 ############
@@ -246,3 +250,15 @@ eval $(thefuck --alias fk)
 # oh-my-zsh auto-correction #
 #############################
 # ENABLE_CORRECTION="false"
+
+
+######################
+# yazi shell wrapper #
+######################
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
