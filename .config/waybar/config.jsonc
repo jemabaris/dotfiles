@@ -36,7 +36,7 @@
     //     "backlight"
   ],
   "custom/playerctl": {
-    "format": "<span foreground='#46c880'>  </span> <span>{}</span> ",
+    "format": "<span foreground='#0ee8a0'>  </span> <span>{}</span> ",
     "return-type": "json",
     "max-length": 55,
     "exec": "playerctl -p \"tidal-hifi,io.github.lullabyX.sone\" metadata --format '{\"text\": \"{{title}} - {{artist}}\"}' -F",
@@ -45,7 +45,7 @@
     "on-click-middle": "playerctl previous",
     "on-click-right": "playerctl next",
     "format-icons": {
-      "Playing": "<span foreground='#46c880'>  </span>",
+      "Playing": "<span foreground='#0ee8a0'>  </span>",
       "Paused": "<span foreground='#cdd6f4'> 󰏥 </span>"
     }
   },

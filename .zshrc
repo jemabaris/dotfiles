@@ -20,6 +20,9 @@ fi
 #####################
 
 
+# Add openAI API key
+export OPENAI_API_KEY="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"
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -54,6 +57,8 @@ alias s="yay -Ss" # Alias for searching a package with yay
 alias srczsh="source ~/.zshrc"
 alias ff="fastfetch"
 alias rizz="WallRizz -d ~/Documents/Ricing/Wallpaper/"
+alias zj="zellij"
+alias mx='tmux'
 # alias remotty= "kitty -o allow_remote_control=yes"
 
 # Add ChrisTitus Aliases
