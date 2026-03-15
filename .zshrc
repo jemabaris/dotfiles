@@ -207,6 +207,9 @@ bindkey '^ ' autosuggest-accept
 # Custom Escape keybinding for the zsh-vi-mode plugin
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+# Rebind ctrl+l to ctrl+shift+l to keep compatibility with vim-navigator
+bindkey '^L' undefined-key
+bindkey '^[[1;6L' clear-screen
 
 
 ###########################
