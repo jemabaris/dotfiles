@@ -1,0 +1,6 @@
+@import "config/general"
+@import "config/disable-prompt"
+@import "colorscheme/dracula"
+@import "config/icons"
+@import "themes/spotlight-dark"
+// @import "themes/simple-tokyonight"
