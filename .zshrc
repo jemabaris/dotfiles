@@ -52,13 +52,14 @@ fi
 ###############
 # Add Aliases #
 ###############
-alias up="~/EndeavourOS_Smart_Update_Wrapper" # Advanced update script to update all pacman and AUR packages
+alias up="arch-smart-update" # Advanced update script to update all pacman and AUR packages
 alias s="yay -Ss" # Alias for searching a package with yay
 alias srczsh="source ~/.zshrc"
 alias ff="fastfetch"
 alias rizz="WallRizz -d ~/Documents/Ricing/Wallpaper/"
 alias zj="zellij"
 alias mx='tmux'
+alias record='gpu-screen-recorder-gtk'
 # alias remotty= "kitty -o allow_remote_control=yes"
 
 # Add ChrisTitus Aliases
