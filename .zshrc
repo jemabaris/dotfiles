@@ -137,6 +137,10 @@ fi
 #################
 eval "$(zoxide init --cmd cd zsh)"
 
+###############
+# Source Mise #
+###############
+eval "$(~/.local/bin/mise activate zsh)"
 
 ##############
 # Source fzf #
