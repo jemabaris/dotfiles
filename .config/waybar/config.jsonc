@@ -76,29 +76,54 @@
     "on-click": "filelight /",
     "on-click-right": "filelight /home/"
   },
-  "hyprland/workspaces": {
-    "all-outputs": true,
-    "active-only": true,
-    "show-special": true,
-    "on-click": "activate",
-    "format": "{icon}",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "urgent": "",
-      "active": "",
-      "default": ""
-    }
-  },
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0",
+            "active": "󱓻"
+          },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+          }
+        },
+//   "hyprland/workspaces": {
+//     "all-outputs": true,
+//     "active-only": true,
+//     "show-special": true,
+//     "on-click": "activate",
+//     "format": "{icon}",
+//     "on-scroll-up": "hyprctl dispatch workspace e+1",
+//     "on-scroll-down": "hyprctl dispatch workspace e-1",
+//     "format-icons": {
+//       "1": "",
+//       "2": "",
+//       "3": "",
+//       "4": "",
+//       "5": "",
+//       "6": "",
+//       "7": "",
+//       "8": "",
+//       "9": "",
+//       "urgent": "",
+//       "active": "",
+//       "default": ""
+//     }
+//   },
   "tray": {
     "icon-size": 20,
     "spacing": 8
@@ -187,7 +212,8 @@
     "format": " 󰣇",
     "tooltip": "true",
     "tooltip-format": "Upgrade System",
-    "on-click": "kitty  ~/EndeavourOS_Smart_Update_Wrapper"
+    "on-click": "kitty -e btop",
+    "on-click-right": "kitty -e arch-smart-update"
   },
   "custom/separator": {
     "format": " ",
