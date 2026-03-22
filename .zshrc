@@ -58,7 +58,7 @@ alias srczsh="source ~/.zshrc"
 alias ff="fastfetch"
 alias rizz="WallRizz -d ~/Documents/Ricing/Wallpaper/"
 alias zj="zellij"
-alias mx='tmux'
+alias t='tmux'
 alias record='gpu-screen-recorder-gtk'
 # alias remotty= "kitty -o allow_remote_control=yes"
 
