@@ -52,7 +52,7 @@ fi
 ############
 # Keychain #
 ############
-eval $(keychain --eval --agents ssh id_rsa)
+eval "$(keychain --eval --agents ssh ~/.ssh/id_ed25519)"
 
 ###############
 # Add Aliases #
