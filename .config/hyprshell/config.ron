@@ -1,14 +1,14 @@
-// Edit with `hyprshell config edit`
+// Edit via `hyprshell config edit`, generate via `hyprshell config generate`
 (
     version: 3,
     windows: (
-        scale: 7.5,
+        scale: 8.5,
         items_per_row: 5,
         overview: (
             launcher: (
                 default_terminal: "kitty",
                 launch_modifier: "ctrl",
-                width: 500,
+                width: 650,
                 max_items: 5,
                 show_when_empty: true,
                 plugins: (
@@ -18,38 +18,18 @@
                         show_actions_submenu: true,
                     ),
                     terminal: (),
-                    shell: None,
+                    shell: (),
                     websearch: (
                         engines: [
                             (
-                                url: "https://www.google.com/search?q={}",
-                                name: "Google",
-                                key: 'g',
-                            ),
-                            (
-                                url: "https://www.startpage.com/sp/search?query={}",
-                                name: "Startpage",
-                                key: 's',
-                            ),
-                            (
-                                url: "https://en.wikipedia.org/wiki/Special:Search?search={}",
-                                name: "Wikipedia",
-                                key: 'w',
-                            ),
-                            (
-                                url: "https://chatgpt.com/?q={}",
-                                name: "ChatGpt",
-                                key: 'c',
+                                url: "https://duckduckgo.com/?q={}",
+                                name: "DuckDuckGo",
+                                key: 'd',
                             ),
                             (
                                 url: "https://www.youtube.com/results?search_query={}",
                                 name: "YouTube",
                                 key: 'y',
-                            ),
-                            (
-                                url: "https://www.reddit.com/search?q={}",
-                                name: "Reddit",
-                                key: 'r',
                             ),
                         ],
                     ),
@@ -88,15 +68,13 @@
             modifier: "alt",
             filter_by: [],
             hide_filtered: false,
-            exclude_special_workspaces: "",
         ),
         switch: (
             modifier: "super",
-            key: "Tab",
-            filter_by: [],
+            filter_by: [
+                current_monitor,
+            ],
             switch_workspaces: false,
-            exclude_special_workspaces: "",
         ),
-        switch_2: None,
     ),
 )
