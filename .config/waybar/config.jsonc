@@ -1,4 +1,5 @@
 {
+  // Bar for OLED monitor (DP-5)
   "layer": "top",
   //   "output": "DP-5",
   "exclusive": "false",
@@ -77,62 +78,61 @@
     "on-click": "filelight /",
     "on-click-right": "filelight /home/"
   },
-  //     "hyprland/workspaces": {
-  //         "on-click": "activate",
-  //         "format": "{icon}",
-  //         "format-icons": {
-  //             "default": "",
-  //             "1": "1",
-  //             "2": "2",
-  //             "3": "3",
-  //             "4": "4",
-  //             "5": "5",
-  //             "6": "6",
-  //             "7": "7",
-  //             "8": "8",
-  //             "9": "9",
-  //             "10": "0",
-  //             "active": "󱓻"
-  //           },
-  //         "persistent-workspaces": {
-  //             "1": [],
-  //             "2": [],
-  //             "3": [],
-  //             "4": [],
-  //             "5": []
-  //           }
-  //         },
+  //   "hyprland/workspaces": {
+  //     //     "all-outputs": true,
+  //     "active-only": true,
+  //     "on-click": "activate",
+  //     "format": "{icon}",
+  //     "format-icons": {
+  //       "default": "",
+  //       "1": "1",
+  //       "2": "2",
+  //       "3": "3",
+  //       "4": "4",
+  //       "5": "5",
+  //       "6": "6",
+  //       "7": "7",
+  //       "8": "8",
+  //       "9": "9",
+  //       "10": "0",
+  //       "active": "󱓻"
+  //     },
+  //     "persistent-workspaces": {
+  //       "1": [],
+  //       "2": [],
+  //       "3": [],
+  //       "4": [],
+  //       "5": []
+  //     }
+  //   },
   "hyprland/workspaces": {
-    "all-outputs": true,
+    "all-outputs": false,
     "active-only": true,
-    "show-special": true,
+    "show-special": false,
     "on-click": "activate",
     "format": "{icon}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "0",
-      //       "1": "",
-      //       "2": "",
-      //       "3": "",
-      //       "4": "",
-      //       "5": "",
-      //       "6": "",
-      //       "7": "",
-      //       "8": "",
-      //       "9": "",
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
       "urgent": "",
       "active": "",
       "default": ""
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
     }
   },
   "tray": {

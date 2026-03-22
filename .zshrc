@@ -49,6 +49,15 @@ else
 fi
 
 
+###########
+# Keyring #
+###########
+# Use GNOME Keyring SSH agent if available
+if [ -S "$XDG_RUNTIME_DIR/keyring/ssh" ]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/keyring/ssh"
+fi
+
+
 ###############
 # Add Aliases #
 ###############
