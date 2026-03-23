@@ -61,6 +61,7 @@ fi
 ############
 # Keychain #
 ############
+unset SSH_ASKPASS
 eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
 
 # Only run keychain outside of tmux
