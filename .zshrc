@@ -18,6 +18,15 @@ fi
 #####################
 # Special Functions #
 #####################
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+    exec tmux new-session -A -s Janis_tmux01
+fi
+
+
+
+#####################
+# Special Functions #
+#####################
 
 
 # Add openAI API key
@@ -52,7 +61,7 @@ fi
 ############
 # Keychain #
 ############
-eval "$(keychain --eval --quiet ~/.ssh/id_ed25519)"
+eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
 
 ###############
 # Add Aliases #
