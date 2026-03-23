@@ -18,9 +18,9 @@ fi
 #####################
 # Special Functions #
 #####################
-if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-    exec tmux new-session -A -s Janis_tmux01
-fi
+# if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+#     exec tmux new-session -A -s Janis_tmux01
+# fi
 
 
 
@@ -61,15 +61,15 @@ fi
 ############
 # Keychain #
 ############
-# eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
+eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
 
 # Only run keychain outside of tmux
-if [ -z "$TMUX" ]; then
-    eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
-else
-    # Inside tmux, just source the existing keychain env
-    [ -f ~/.keychain/"$(hostname)-sh" ] && source ~/.keychain/"$(hostname)-sh"
-fi
+# if [ -z "$TMUX" ]; then
+#     eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
+# else
+#     # Inside tmux, just source the existing keychain env
+#     [ -f ~/.keychain/"$(hostname)-sh" ] && source ~/.keychain/"$(hostname)-sh"
+# fi
 
 ###############
 # Add Aliases #
