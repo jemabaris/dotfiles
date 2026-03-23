@@ -1,8 +1,8 @@
 #############
 # Add fetch #
 #############
-fastfetch
-# nitch
+# fastfetch
+nitch
 
 
 ################################
@@ -61,7 +61,15 @@ fi
 ############
 # Keychain #
 ############
-eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
+# eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
+
+# Only run keychain outside of tmux
+if [ -z "$TMUX" ]; then
+    eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
+else
+    # Inside tmux, just source the existing keychain env
+    [ -f ~/.keychain/"$(hostname)-sh" ] && source ~/.keychain/"$(hostname)-sh"
+fi
 
 ###############
 # Add Aliases #
