@@ -2,3 +2,6 @@
 go = "latest"
 neovim = "stable"
 python = "latest"
+
+[settings]
+disable_tools = ["python"]

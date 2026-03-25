@@ -17,3 +17,8 @@ end, { desc = "Run Python File" })
 --         -- fallback to other functionality
 --     end
 -- end, { desc = "Clear Copilot suggestion or fallback" })
+vim.keymap.set("n", "gm", function()
+  local line = vim.api.nvim_get_current_line()
+  local col = math.floor(#line / 2)
+  vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), col })
+end, { desc = "Jump to middle of line" })
