@@ -1,8 +1,8 @@
 #############
 # Add fetch #
 #############
-# fastfetch
-nitch
+fastfetch
+# nitch
 
 
 ################################
