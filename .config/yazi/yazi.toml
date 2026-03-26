@@ -1,0 +1,5 @@
+[preview]
+max_width = 15000
+max_height = 15000
+image_bound = [0, 0]
+image_alloc = 0
