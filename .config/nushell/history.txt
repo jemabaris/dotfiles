@@ -1,0 +1,12 @@
+l
+cd home
+cd ~/dotfiles/
+ls
+ls -a
+eza
+eza -a
+ps
+$env
+ls | sort-by modified
+ls -a | sort-by modified
+vi
