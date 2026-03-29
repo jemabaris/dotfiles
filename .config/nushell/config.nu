@@ -16,3 +16,46 @@
 # You can also pretty-print and page through the documentation for configuration
 # options using:
 #     config nu --doc | nu-highlight | less -R
+
+$env.config.keybindings ++= [
+    {
+        name: reload-config
+        modifier: none
+        keycode: f5
+        mode: emacs
+        event: {
+            send: executehostcommand
+            cmd: "source ~/.config/nushell/config.nu; source ~/.config/nushell/env.nu; print 'Config reloaded!'"
+        }
+    }
+    {
+        name: reload-config
+        modifier: none
+        keycode: f5
+        mode: vi_insert
+        event: {
+            send: executehostcommand
+            cmd: "source ~/.config/nushell/config.nu; source ~/.config/nushell/env.nu; print 'Config reloaded!'"
+        }
+    }
+    {
+        name: reload-config
+        modifier: none
+        keycode: f5
+        mode: vi_normal
+        event: {
+            send: executehostcommand
+            cmd: "source ~/.config/nushell/config.nu; source ~/.config/nushell/env.nu; print 'Config reloaded!'"
+        }
+    }
+]
+
+
+print "CONFIG LOADED"
+
+
+#############
+## Nushell ##
+#############
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
