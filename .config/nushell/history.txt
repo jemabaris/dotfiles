@@ -10,3 +10,20 @@ $env
 ls | sort-by modified
 ls -a | sort-by modified
 vi
+source $nu.config-path
+source ~/.config/nushell/config.nu
+q
+:q
+$env.config.keybindings | where keycode == 'f5'
+nu --version
+vi
+config get keybindings | where keycode == 'f5'
+$env.config.keybindings | where keycode == f5
+nvim
+source ~/.config/nushell/config.nu
+$nu.config-path
+version
+open ~/.config/nushell/config.nu | lines | first 5
+open ~/.config/nushell/config.nu | lines | first 50
+open ~/.config/nushell/config.nu | lines | first 500
+vi ~/.config/nushell/config.nu
