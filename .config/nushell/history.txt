@@ -86,3 +86,7 @@ nu
 nu
 echo 1
 cd ~/dotfiles
+git commit -am "Added temporary test-config for nushell and starship"
+mkdir .config/starship
+cp -r ~/.config/starship/ ~/dotfiles/.config
+git add .config/starship/
