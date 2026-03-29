@@ -27,3 +27,62 @@ open ~/.config/nushell/config.nu | lines | first 5
 open ~/.config/nushell/config.nu | lines | first 50
 open ~/.config/nushell/config.nu | lines | first 500
 vi ~/.config/nushell/config.nu
+starship preset pastel-powerline -o ~/.config/starship.toml
+cd ~/dotfiles/
+nu --version
+starship preset catppuccin-powerline -o ~/.config/starship.toml
+nu --version
+Enable-Transient-Prompt
+Enable-TransientPrompt
+starship Enable-TransientPrompt
+cd ~/dotfiles/
+git status
+ls
+ls -a
+cd ~/dotfiles/.config/nushell
+ls
+vi config.nu
+nvim config.nu
+exit
+nu
+source ~/.config/nushell/config.nu
+nvim config.nu
+nvim ~/.config/nushell/config.nu
+nvim
+source env.nu
+source conf.nu
+source ~/.config/nushell/config.nu
+source ~/.config/nushell/env.nu
+cd ~/Repos/
+mkdir test
+ls
+cd test
+touch main.go
+touch main.py
+vi ~/dotfiles/.config/nushell/env.nu
+mkdir ~/dotfiles/.config/starship
+touch ~/dotfiles/.config/starship/starship.toml
+cd ~/dotfiles/.config
+ls -a
+cd starship
+ls -a
+nvim starship.toml
+exit
+cd ~/dotfiles/
+cd ~/dotfiles/.config/nushell/
+nvim env.nu
+exit
+cd ~/dotfiles
+nvim
+exit
+nu
+nvim ~/.config/nushell/config.nu
+nvim
+starship
+starship config
+nu
+nu
+nu
+nu
+echo 1
+cd ~/dotfiles
