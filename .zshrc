@@ -15,35 +15,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
-#####################
-# Special Functions #
-#####################
-# Source secrets
-[ -f ~/dotfiles/.secrets ] && source ~/dotfiles/.secrets
+##################
+# Source secrets #
+##################
+[ -f ~/dotfiles/secrets/.secrets ] && source ~/dotfiles/secrets/.secrets
 
-
-
-###################################
-# tmux attach to existing session #
-###################################
-# if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-#     exec tmux new-session -A -s Janis_tmux01
-# fi
-#
-#if [ -z "$TMUX" ]; then
-#  tmux attach-session -t last 2>/dev/null || tmux new-session
-#fi
-t() {
-  tmux attach-session -t last 2>/dev/null || tmux new-session
-}
 
 #####################
 # Special Functions #
 #####################
 
-
-# Add openAI API key
-export OPENAI_API_KEY="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"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -84,6 +65,21 @@ eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
 #     [ -f ~/.keychain/"$(hostname)-sh" ] && source ~/.keychain/"$(hostname)-sh"
 # fi
 
+
+###################################
+# tmux attach to existing session #
+###################################
+# if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+#     exec tmux new-session -A -s Janis_tmux01
+# fi
+#
+#if [ -z "$TMUX" ]; then
+#  tmux attach-session -t last 2>/dev/null || tmux new-session
+#fi
+t() {
+  tmux attach 2>/dev/null || tmux new-session
+}
+
 ###############
 # Add Aliases #
 ###############
@@ -92,7 +88,6 @@ alias srczsh="source ~/.zshrc"
 alias ff="fastfetch"
 alias rizz="WallRizz -d ~/Documents/Ricing/Wallpaper/"
 alias zj="zellij"
-#alias t='tmux'
 alias record='gpu-screen-recorder-gtk'
 alias s='sesh connect $(sesh list | fzf)'
 # alias remotty= "kitty -o allow_remote_control=yes"
