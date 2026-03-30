@@ -1,4 +1,6 @@
 lazy-lock.json
 lazyvim.json
 .secrets
+.config/nushell/config.nu.bak
+.config/nushell/env.nu.bak
 

@@ -98,3 +98,4 @@ sesh list | sort-by name
 sesh list
 sesh list | ls | sort-by name
 sesh list
+ls
