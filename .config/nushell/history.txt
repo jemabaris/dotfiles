@@ -94,3 +94,7 @@ git commit -am "Added Starship"
 git push
 nitch
 pu
+sesh list | sort-by name
+sesh list
+sesh list | ls | sort-by name
+sesh list

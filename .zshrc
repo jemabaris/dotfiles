@@ -18,11 +18,24 @@ fi
 #####################
 # Special Functions #
 #####################
+# Source secrets
+[ -f ~/dotfiles/.secrets ] && source ~/dotfiles/.secrets
+
+
+
+###################################
+# tmux attach to existing session #
+###################################
 # if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
 #     exec tmux new-session -A -s Janis_tmux01
 # fi
-
-
+#
+#if [ -z "$TMUX" ]; then
+#  tmux attach-session -t last 2>/dev/null || tmux new-session
+#fi
+t() {
+  tmux attach-session -t last 2>/dev/null || tmux new-session
+}
 
 #####################
 # Special Functions #
@@ -75,13 +88,13 @@ eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
 # Add Aliases #
 ###############
 alias up="arch-smart-update" # Advanced update script to update all pacman and AUR packages
-alias s="yay -Ss" # Alias for searching a package with yay
 alias srczsh="source ~/.zshrc"
 alias ff="fastfetch"
 alias rizz="WallRizz -d ~/Documents/Ricing/Wallpaper/"
 alias zj="zellij"
-alias t='tmux attach'
+#alias t='tmux'
 alias record='gpu-screen-recorder-gtk'
+alias s='sesh connect $(sesh list | fzf)'
 # alias remotty= "kitty -o allow_remote_control=yes"
 
 # Add ChrisTitus Aliases
@@ -95,6 +108,9 @@ alias cp='cp -i'
 alias cpr='cp -r'
 alias mv='mv -i'
 alias rsync='rsync --progress'
+
+# git aliases
+# alias gcam='git commit -am' Already in ohmyzsh git plugin
 
 # trash-cli
 alias te='trash-empty'
