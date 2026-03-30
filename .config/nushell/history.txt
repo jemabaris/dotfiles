@@ -99,3 +99,25 @@ sesh list
 sesh list | ls | sort-by name
 sesh list
 ls
+exit
+https://nushell.sh/book/configuration.html#remove-welcome-message
+exit
+nu
+exit
+config nu
+source $nu.config-path
+starship preset pastel-powerline -o ~/.config/starship.toml
+starship preset tokyo-night -o ~/.config/starship.toml
+starship preset gruvbox-rainbow -o ~/.config/starship.toml
+starship preset jetpack -o ~/.config/starship.toml
+cd ~/dotfiles
+starship preset catppuccin-powerline -o ~/.config/starship.toml
+starship preset pastel-powerline -o ~/.config/starship.toml
+starship preset catppuccin-powerline -o ~/.config/starship.toml
+starship preset pastel-powerline -o ~/.config/starship.toml
+zoxide init nushell --hook prompt | save ~/.zoxide.nu
+source $nu.config-path
+cd ~/dotfiles
+ls
+cd
+cd dotfiles

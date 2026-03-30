@@ -17,26 +17,29 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
-
-#################
-## Keybindings ##
-#################
-    keybindings: [
-        {
-            name: reload_config
-            modifier: none
-            keycode: f5
-            mode: [emacs, vi_normal, vi_insert]
-            event: {
-                send: executehostcommand
-                cmd: "source $nu.config-path; print 'Config reloaded!'"
-            }
+# Hide welcome message
+$env.config.show_banner = false
+$env.config.keybindings = [
+    {
+        name: reload_config
+        modifier: none
+        keycode: f5
+        mode: [emacs, vi_normal, vi_insert]
+        event: {
+            send: executehostcommand
+            cmd: "source $nu.config-path; print 'Config reloaded!'"
         }
-    ]
-}
+    }
+]
 
-#############
-## Nushell ##
-#############
+###########
+# Nushell #
+###########
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+
+##########
+# Zoxide #
+##########
+zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
