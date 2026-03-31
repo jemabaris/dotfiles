@@ -181,10 +181,59 @@ keybinds {
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
         bind "Alt o" { MoveTab "Right"; }
-        bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
-        bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
-        bind "Alt j" "Alt Down" { MoveFocus "Down"; }
-        bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+        bind "Ctrl h" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "left";
+            };
+        }
+        bind "Ctrl j" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "down";
+            };
+        }
+        bind "Ctrl k" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "up";
+            };
+        }
+        bind "Ctrl l" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "right";
+            };
+        }
+        bind "Alt h" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "left";
+            };
+        }
+        bind "Alt j" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "down";
+            };
+        }
+        bind "Alt k" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "up";
+            };
+        }
+        bind "Alt l" {
+            MessagePlugin "file:/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
+                name "resize";
+                payload "right";
+            };
+        }
+        
+//         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
+//         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
+//         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
+//         bind "Alt k" "Alt Up" { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
@@ -210,9 +259,9 @@ keybinds {
     shared_except "tab" "locked" {
         bind "Ctrl t" { SwitchToMode "Tab"; }
     }
-    shared_except "move" "locked" {
-        bind "Ctrl h" { SwitchToMode "Move"; }
-    }
+//     shared_except "move" "locked" {
+//         bind "Ctrl h" { SwitchToMode "Move"; }
+//     }
     shared_except "tmux" "locked" {
         bind "Ctrl b" { SwitchToMode "Tmux"; }
     }
@@ -517,56 +566,4 @@ load_plugins {
 
 web_client {
     font "monospace"
-}
-keybinds {
-  shared_except "locked" {
-    bind "Ctrl h" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "left";
-        };
-    }
-    bind "Ctrl j" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "down";
-        };
-    }
-    bind "Ctrl k" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "up";
-        };
-    }
-    bind "Ctrl l" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "move_focus";
-            payload "right";
-        };
-    }
-    bind "Alt h" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "left";
-        };
-    }
-    bind "Alt j" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "down";
-        };
-    }
-    bind "Alt k" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "up";
-        };
-    }
-    bind "Alt l" {
-        MessagePlugin "/home/janis/.config/zellij/plugins/vim-zellij-navigator.wasm" {
-            name "resize";
-            payload "right";
-        };
-    }
-  }
 }
