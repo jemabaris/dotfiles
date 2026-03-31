@@ -2,10 +2,15 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- leave insert mode by pressing jk quickly
 vim.keymap.set("i", "jk", "<ESC>", { noremap = false })
+-- keymapping for accessing the Snacks Dashboard
 vim.keymap.set("n", "<leader>;", Snacks.dashboard.open, { desc = "Open Snacks Dashboard" })
--- vim.g.maplocalleader = ","
 
+require("which-key").add({
+  { "<leader>;", icon = { icon = "󱥰 ", color = "purple" } },
+})
+-- vim.g.maplocalleader = ","
 -- # Janis Custom Setup to quickly run current Python file in a terminal
 vim.keymap.set("n", "<localleader>rr", function()
   vim.cmd("write")
@@ -26,3 +31,23 @@ vim.keymap.set("n", "gm", function()
   local col = math.floor(#line / 2)
   vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), col })
 end, { desc = "Jump to middle of line" })
+
+-- recommended mappings
+-- resizing splits
+-- these keymaps will also accept a range,
+-- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
+vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+-- moving between splits
+vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
+-- swapping buffers between windows
+vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
