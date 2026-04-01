@@ -4,7 +4,7 @@
 )
 
 (defsrc
-  caps a s d f j k l ; bspc
+  caps a s d f j k l ;
 )
 (defvar
   tap-time 150
@@ -21,10 +21,9 @@
   k (tap-hold $tap-time $hold-time k rsft)
   l (tap-hold $tap-time $hold-time l ralt)
   ; (tap-hold $tap-time $hold-time ; rmet)
-  bak (tap-hold $tap-time $hold-time bspc C-bspc)
 )
 
 (deflayer base
-  @escctrl @a @s @d @f @j @k @l @; @bak
+  @escctrl @a @s @d @f @j @k @l @;
 )
 

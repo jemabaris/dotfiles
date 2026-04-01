@@ -18,19 +18,28 @@
 #     config nu --doc | nu-highlight | less -R
 
 # Hide welcome message
-$env.config.show_banner = false
-$env.config.keybindings = [
-    {
-        name: reload_config
-        modifier: none
-        keycode: f5
-        mode: [emacs, vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "source $nu.config-path; print 'Config reloaded!'"
+$env.config = {
+    show_banner: false
+    keybindings: [
+        {
+            name: reload_config
+            modifier: none
+            keycode: f5
+            mode: [emacs, vi_normal, vi_insert]
+            event: {
+                send: executehostcommand
+                cmd: "source $nu.config-path; print 'Config reloaded!'"
+            }
         }
-    }
-]
+        {
+            name: clear_screen
+            modifier: Control_Shift
+            keycode: char_l
+            mode: [emacs, vi_normal, vi_insert]
+            event: { send: ClearScreen }
+        }
+    ]
+}
 
 ###########
 # Nushell #

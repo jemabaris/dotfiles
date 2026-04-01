@@ -121,3 +121,26 @@ cd ~/dotfiles
 ls
 cd
 cd dotfiles
+clear
+clear
+keybindings list
+keybindings list --keybindings
+source $nu.config-path
+source ~/.config/nushell/env.nu
+exit
+clear
+source $nu.config-path
+keybindings list
+cd dotfiles
+source $nu.config-path
+config nu --default | grep modifier
+config nu --default
+keybindings list --keybindings | get modifier | uniq
+clear
+keybindings list | get modifier | uniq
+keybindings list
+source $nu.config-path
+clear
+echo 1
+echo 2
+systemctl --user restart kanata.service
