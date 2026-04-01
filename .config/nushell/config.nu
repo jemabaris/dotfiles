@@ -33,8 +33,8 @@ $env.config = {
         }
         {
             name: clear_screen
-            modifier: Control_Shift
-            keycode: char_l
+            modifier: control
+            keycode: f12
             mode: [emacs, vi_normal, vi_insert]
             event: { send: ClearScreen }
         }

@@ -144,3 +144,8 @@ clear
 echo 1
 echo 2
 systemctl --user restart kanata.service
+echo 1
+echo 2
+exit
+echo 1
+clear
