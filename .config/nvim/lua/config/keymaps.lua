@@ -6,7 +6,6 @@
 vim.keymap.set("i", "jk", "<ESC>", { noremap = false })
 -- keymapping for accessing the Snacks Dashboard
 vim.keymap.set("n", "<leader>;", Snacks.dashboard.open, { desc = "Open Snacks Dashboard" })
-
 require("which-key").add({
   { "<leader>;", icon = { icon = "󱥰 ", color = "purple" } },
 })
@@ -31,6 +30,9 @@ vim.keymap.set("n", "gm", function()
   local col = math.floor(#line / 2)
   vim.api.nvim_win_set_cursor(0, { vim.fn.line("."), col })
 end, { desc = "Jump to middle of line" })
+
+-- # Open oil.nvim in a floating window with <leader>fo
+vim.keymap.set("n", "<leader>fo", require("oil").open_float, { desc = "Open Oil File Explorer" })
 
 -- recommended mappings
 -- resizing splits
