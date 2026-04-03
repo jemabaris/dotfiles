@@ -26,6 +26,14 @@ fi
 #####################
 
 
+#####################
+# Special Functions #
+#####################
+export CLAUDE_CODE_USE_OPENAI=1
+export OPENAI_BASE_URL=http://localhost:11434/v1
+export OPENAI_MODEL=qwen3-coder:30b
+
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -90,6 +98,8 @@ alias rizz="WallRizz -d ~/Documents/Ricing/Wallpaper/"
 alias zj="zellij"
 alias record='gpu-screen-recorder-gtk'
 alias s='sesh connect $(sesh list | fzf)'
+alias deepseek='ollama run deepseek-r1:32b'
+alias claude='openclaude'
 # alias remotty= "kitty -o allow_remote_control=yes"
 
 # Add ChrisTitus Aliases

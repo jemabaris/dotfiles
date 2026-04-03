@@ -34,7 +34,7 @@ end, { desc = "Jump to middle of line" })
 -- # Open oil.nvim in a floating window with <leader>fo
 vim.keymap.set("n", "<leader>fo", require("oil").open_float, { desc = "Open Oil File Explorer" })
 
--- recommended mappings
+-- smart-splits.nvim
 -- resizing splits
 -- these keymaps will also accept a range,
 -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
