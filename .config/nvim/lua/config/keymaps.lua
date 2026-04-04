@@ -11,11 +11,17 @@ require("which-key").add({
 })
 -- vim.g.maplocalleader = ","
 -- # Janis Custom Setup to quickly run current Python file in a terminal
-vim.keymap.set("n", "<localleader>rr", function()
+vim.keymap.set("n", "<localleader>rp", function()
   vim.cmd("write")
   vim.cmd("belowright 20split")
   vim.cmd("terminal python " .. vim.fn.expand("%"))
 end, { desc = "Run Python File" })
+-- # Janis Custom Setup to quickly run current file in a terminal
+vim.keymap.set("n", "<localleader>rl", function()
+  vim.cmd("write")
+  vim.cmd("belowright 20split")
+  vim.cmd("terminal lua " .. vim.fn.expand("%"))
+end, { desc = "Run Lua File" })
 
 -- # Clear copilot suggestion with Esc if visible, otherwise preserve default Esc behavior
 -- vim.keymap.set("n", "<esc>", function()
@@ -34,7 +40,7 @@ end, { desc = "Jump to middle of line" })
 -- # Open oil.nvim in a floating window with <leader>fo
 vim.keymap.set("n", "<leader>fo", require("oil").open_float, { desc = "Open Oil File Explorer" })
 
--- smart-splits.nvim
+-- recommended mappings
 -- resizing splits
 -- these keymaps will also accept a range,
 -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
