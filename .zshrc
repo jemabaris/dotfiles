@@ -114,6 +114,9 @@ alias cpr='cp -r'
 alias mv='mv -i'
 alias rsync='rsync --progress'
 
+# openhue aliases
+alias lounge-off='openhue set room Lounge --off'
+alias produktion='openhue set scene Produktion'
 # git aliases
 # alias gcam='git commit -am' Already in ohmyzsh git plugin
 
