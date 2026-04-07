@@ -31,7 +31,7 @@ fi
 #####################
 export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_BASE_URL=http://localhost:11434/v1
-export OPENAI_MODEL=qwen3-coder:30b
+export OPENAI_MODEL=gemma4:31b
 
 
 # Path to your Oh My Zsh installation.

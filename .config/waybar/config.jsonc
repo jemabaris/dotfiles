@@ -16,6 +16,7 @@
     "cpu",
     "memory",
     "temperature",
+    "custom/vram",
     "custom/filler",
     "custom/playerctl",
     "custom/filler",
@@ -162,15 +163,20 @@
   "cpu": {
     "interval": 10,
     "format": " {usage}% ",
-    "max-length": 10,
-    "on-click": "htop"
+    "max-length": 10
+    //     "on-click": "htop"
+  },
+  "custom/vram": {
+    "exec": "/usr/bin/env sh -c 'v=$(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | tr \",\" \" \"); set -- $v; printf \"{\\\"text\\\":\\\"󰾲 %d%%\\\",\\\"tooltip\\\":\\\"VRAM: %s / %s MiB\\\"}\\n\" $(( $1 * 100 / $2 )) $1 $2'",
+    "return-type": "json",
+    "interval": 2
   },
   "memory": {
     "interval": 30,
     "format": " {}% ",
-    "format-alt": " {used:0.1f}G",
-    "max-length": 10,
-    "on-click-right": "htop"
+    //     "format-alt": " {used:0.1f}G",
+    "max-length": 10
+    //     "on-click-right": "htop"
   },
   "backlight": {
     "device": "amdgpu_bl1",
@@ -260,7 +266,9 @@
     "thermal-zone": 0,
     "critical-threshold": 80,
     "format-critical": " {temperatureC}°C",
-    "format": " {temperatureC}°C"
+    "format": " {temperatureC}°C",
+    "tooltip": true,
+    "tooltip-format": "CPU Temperature"
   },
 
   "custom/wrap-left": {

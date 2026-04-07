@@ -47,7 +47,8 @@ window#waybar {
 
 #cpu,
 #memory,
-#temperature {
+#temperature,
+#custom-vram {
   font-size: 15px;
   background: #2a2d45;
   margin-top: 5px;
@@ -56,7 +57,7 @@ window#waybar {
 
 #cpu {
   color: #ffc676;
-  padding: 0px 10px 0px 12px;
+  padding: 0px 10px 0px 10px;
   border-radius: 5px 0px 0px 5px;
 }
 
@@ -68,7 +69,13 @@ window#waybar {
 
 #temperature {
   color: #8aadf4;
-  padding: 0px 12px 0px 0px;
+  padding: 0px 10px 0px 0px;
+  border-radius: 0px 0px 0px 0px;
+}
+
+#custom-vram {
+  color: #c6a0f6;
+  padding: 0px 10px 0px 0px;
   border-radius: 0px 5px 5px 0px;
 }
 
