@@ -64,7 +64,7 @@ window#waybar {
 #memory {
   color: #c2e78c;
   padding: 0px 10px 0px 0px;
-  border-radius: 0;
+  border-radius: 0px 0px 0px 0px;
 }
 
 #temperature {
@@ -163,23 +163,12 @@ window#waybar {
   background-color: #1e2030;
 }
 
-#battery {
-  color: #a6da95;
-  /* margin: 0px 10px 0px 0px; */
-}
-
 #pulseaudio,
-#backlight {
+#network {
   font-size: 15px;
   background-color: #2a2d45;
   margin-top: 5px;
   margin-bottom: 5px;
-}
-
-#backlight {
-  color: #ffc676;
-  padding: 0px 10px 0px 10px;
-  border-radius: 5px 0px 0px 5px;
 }
 
 #pulseaudio {
@@ -202,6 +191,8 @@ window#waybar {
   color: #c6a0f6;
   margin-right: 10px;
   background-color: #1e2030;
+  padding: 0px 0px 0px 0px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 #custom-dot {
