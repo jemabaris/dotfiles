@@ -1,7 +1,5 @@
 {
-  // Bar for OLED monitor (DP-5)
   "layer": "top",
-  //   "output": "DP-5",
   "exclusive": "false",
   "height": 18,
   "margin-top": 10,
@@ -22,7 +20,7 @@
     "custom/filler",
     "disk",
     "custom/filler",
-    "custom/pacman"
+    "custom/bluetooth"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
@@ -35,8 +33,6 @@
     "tray",
     "clock",
     "custom/notifications"
-    //     "battery",
-    //     "backlight"
   ],
   "custom/playerctl": {
     "format": "<span foreground='#0ee8a0'>  </span> <span>{}</span> ",
@@ -53,20 +49,6 @@
     }
   },
 
-  // Disabled MPRIS Module Config
-  //   "mpris": {
-  //     "format": "DEFAULT: {player_icon} {dynamic}",
-  //     "format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
-  //     "player-icons": {
-  //       "default": "▶",
-  //       "mpv": "🎵"
-  //     },
-  //     "status-icons": {
-  //       "paused": "⏸"
-  //     }
-  //     // "ignored-players": ["firefox"]
-  //   },
-
   "custom/uptime": {
     "format": " {}",
     "interval": 30,
@@ -79,33 +61,7 @@
     "on-click": "filelight /",
     "on-click-right": "filelight /home/"
   },
-  //   "hyprland/workspaces": {
-  //     //     "all-outputs": true,
-  //     "active-only": true,
-  //     "on-click": "activate",
-  //     "format": "{icon}",
-  //     "format-icons": {
-  //       "default": "",
-  //       "1": "1",
-  //       "2": "2",
-  //       "3": "3",
-  //       "4": "4",
-  //       "5": "5",
-  //       "6": "6",
-  //       "7": "7",
-  //       "8": "8",
-  //       "9": "9",
-  //       "10": "0",
-  //       "active": "󱓻"
-  //     },
-  //     "persistent-workspaces": {
-  //       "1": [],
-  //       "2": [],
-  //       "3": [],
-  //       "4": [],
-  //       "5": []
-  //     }
-  //   },
+
   "hyprland/workspaces": {
     "all-outputs": false,
     "active-only": true,
@@ -244,23 +200,10 @@
     "exec": "hyprctl activewindow | grep class | awk '{print $2}'"
   },
 
-  "custom/pacman": {
+  "custom/bluetooth": {
     "format": "  ",
     "on-click": "overskride"
   },
-  "custom/pacman-update-icon-background": {
-    "format": ""
-  },
-  "custom/pacman-update-icon": {
-    "format": ""
-  },
-  "custom/pacman-update": {
-    "format": " {}",
-    "interval": 3600,
-    "exec": "checkupdates | wc -l",
-    "signal": 8
-  },
-  "custom/window-icon": {},
 
   "temperature": {
     "thermal-zone": 0,
