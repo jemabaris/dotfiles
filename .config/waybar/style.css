@@ -67,6 +67,8 @@ window#waybar {
 
 #bluetooth {
   color: #68b0d6;
+  padding: 0px 10px 0px 10px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 #workspaces button:nth-child(1) label {
@@ -134,6 +136,7 @@ window#waybar {
 }
 
 #pulseaudio,
+#bluetooth,
 #network {
   font-size: 15px;
   background-color: #2a2d45;
