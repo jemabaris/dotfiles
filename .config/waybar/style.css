@@ -5,7 +5,7 @@
   font-family: JetBrainsMono Nerd Font Propo;
   font-weight: 700;
   font-size: 15px;
-  background-color: #1e2030; /* Reduced opacity background */
+  background-color: #1e2030;
 }
 
 window#waybar {
@@ -54,15 +54,19 @@ window#waybar {
   border-radius: 0px 5px 5px 0px;
 }
 
+#custom-playerctl {
+  padding: 0px 0px 0px 0px;
+}
+
 #disk {
   color: #68b0d6;
-  padding: 0px 6px 0px 0px;
+  margin-left: 15px;
+  padding: 0px 8px 0px 1px;
   border-radius: 5px 5px 5px 5px;
 }
 
-#custom-bluetooth {
+#bluetooth {
   color: #68b0d6;
-  background-color: #1e2030;
 }
 
 #workspaces button:nth-child(1) label {
@@ -145,7 +149,6 @@ window#waybar {
 #network {
   color: #c6a0f6;
   margin-right: 10px;
-  /*   background-color: #1e2030; */
   padding: 0px 10px 0px 10px;
   border-radius: 5px 5px 5px 5px;
 }
@@ -171,26 +174,8 @@ window#waybar {
   border-radius: 5px;
 }
 
-#custom-filler {
-  color: #6e738d;
-  padding-left: 0px;
-  padding-right: 9px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-#custom-filler2 {
-  color: #6e738d;
-  padding-left: 3px;
-  padding-right: 9px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
 #tray {
-  /*   padding-left: 5px; */
+  padding-left: 5px;
   padding-right: 10px;
 }
 

@@ -1,10 +1,26 @@
 #!/usr/bin/env bash
-
 DIR="$HOME/Pictures/Wallpapers/"
 CACHE="$HOME/.cache/wallpapers"
 LIST="$CACHE/list"
-
+PAUSE_FILE="$CACHE/paused"
 mkdir -p "$CACHE"
+
+# Handle --pause flag
+if [[ "$1" == "--pause" ]]; then
+  if [[ -f "$PAUSE_FILE" ]]; then
+    rm "$PAUSE_FILE"
+    echo "Wallpaper cycling resumed."
+  else
+    touch "$PAUSE_FILE"
+    echo "Wallpaper cycling paused."
+  fi
+  exit 0
+fi
+
+# Exit silently if paused
+if [[ -f "$PAUSE_FILE" ]]; then
+  exit 0
+fi
 
 # rebuild shuffled list if empty
 if [[ ! -s "$LIST" ]]; then

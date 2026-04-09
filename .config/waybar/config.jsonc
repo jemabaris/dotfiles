@@ -15,16 +15,15 @@
     "memory",
     "temperature",
     "custom/vram",
-    "custom/filler",
+    "custom/dot",
     "custom/playerctl",
-    "custom/filler",
+    "custom/dot",
     "disk",
-    "custom/filler",
-    "custom/bluetooth"
+    "custom/dot",
+    "bluetooth"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
-    "custom/dot",
     "pulseaudio",
     "custom/dot",
     "custom/separator",
@@ -38,7 +37,7 @@
     "format": "<span foreground='#0ee8a0'>  </span> <span>{}</span> ",
     "return-type": "json",
     "max-length": 55,
-    //     "exec": "playerctl -p \"tidal-hifi,io.github.lullabyX.sone\" metadata --format '{\"text\": \"{{title}} - {{artist}}\"}' -F",
+    //   "exec": "playerctl -p \"tidal-hifi,io.github.lullabyX.sone\" metadata --format '{\"text\": \"{{title}} - {{artist}}\"}' -F",
     "exec": "playerctl metadata --format '{\"text\": \"{{title}} - {{artist}}\"}' -F",
     "on-click": "playerctl play-pause",
     "on-click-middle": "playerctl previous",
@@ -49,12 +48,20 @@
     }
   },
 
-  "custom/uptime": {
-    "format": " {}",
-    "interval": 30,
-    "exec": "$HOME/.local/bin/upt2",
-    "on-click": ""
-  },
+  //   "custom/playerctl": {
+  //     "format": "{icon} <span>{}</span>",
+  //     "return-type": "json",
+  //     "max-length": 55,
+  //     "exec": "playerctl metadata --format '{\"text\": \"{{title}} - {{artist}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+  //     "on-click": "playerctl play-pause",
+  //     "on-click-middle": "playerctl previous",
+  //     "on-click-right": "playerctl next",
+  //     "format-icons": {
+  //       "Playing": "<span foreground='#0ee8a0'>  </span>",
+  //       "Paused": "<span foreground='#0ee8a0'> 󰏥 </span>"
+  //     }
+  //   },
+
   "disk": {
     "interval": 1,
     "format": "<span color=\"#68b0d6\"> </span> {}%",
@@ -96,7 +103,8 @@
   },
   "tray": {
     "icon-size": 20,
-    "spacing": 8
+    "spacing": 8,
+    "show-passive-items": true
   },
   "custom/filler": {
     "format": " ",
@@ -190,18 +198,16 @@
     "on-click": "kitty -e btop",
     "on-click-right": "kitty -e arch-smart-update"
   },
-  "custom/separator": {
-    "format": " ",
-    "tooltip": false
-  },
-  "custom/window-name": {
-    "format": " <b>{}</b>",
-    "interval": 1,
-    "exec": "hyprctl activewindow | grep class | awk '{print $2}'"
-  },
 
-  "custom/bluetooth": {
-    "format": "  ",
+  "bluetooth": {
+    "format": "",
+    "format-off": "",
+    "format-on": "",
+    "format-connected": " {device_alias:.9}",
+    "format-connected-battery": " {device_alias:.9} {device_battery_percentage}%",
+    "tooltip": true,
+    "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: {status}",
+    "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nConnected: {device_alias} ({device_address})\nBattery: {device_battery_percentage}%",
     "on-click": "overskride"
   },
 
