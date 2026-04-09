@@ -1,3 +1,4 @@
+// Janis Waybar Config
 {
   "layer": "top",
   "exclusive": "false",
@@ -16,6 +17,7 @@
     "temperature",
     "custom/vram",
     "custom/dot",
+    "mpris",
     "custom/playerctl",
     "custom/dot",
     "disk",
@@ -33,18 +35,21 @@
     "clock",
     "custom/notifications"
   ],
-  "custom/playerctl": {
-    "format": "<span foreground='#0ee8a0'>  </span> <span>{}</span> ",
-    "return-type": "json",
-    "max-length": 55,
-    //   "exec": "playerctl -p \"tidal-hifi,io.github.lullabyX.sone\" metadata --format '{\"text\": \"{{title}} - {{artist}}\"}' -F",
-    "exec": "playerctl metadata --format '{\"text\": \"{{title}} - {{artist}}\"}' -F",
-    "on-click": "playerctl play-pause",
+
+  "mpris": {
+    "format": "{player_icon}  {title} - {artist}",
+    "format-paused": "{status_icon}  {title} - {artist}",
+    "max-length": 50,
+    "dynamic-len": 10,
     "on-click-middle": "playerctl previous",
     "on-click-right": "playerctl next",
-    "format-icons": {
-      "Playing": "<span foreground='#0ee8a0'>  </span>",
-      "Paused": "<span foreground='#cdd6f4'> 󰏥 </span>"
+    "player-icons": {
+      "default": "<span foreground='#0ee8a0'>  </span>"
+    },
+    "status-icons": {
+      "paused": "<span foreground='#0ee8a0'> 󰏥</span>",
+      "playing": "<span foreground='#0ee8a0'> </span>",
+      "stopped": "<span foreground='#008a0'> </span>"
     }
   },
 
@@ -70,9 +75,10 @@
   },
 
   "hyprland/workspaces": {
-    "all-outputs": false,
-    "active-only": true,
-    "show-special": false,
+    //     "all-outputs": false,
+    //     "active-only": true,
+    //     "show-special": false,
+    "sort-by-number": true,
     "on-click": "activate",
     "format": "{icon}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -91,15 +97,15 @@
       "urgent": "",
       "active": "",
       "default": ""
-    },
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
-      "10": []
     }
+    //     "persistent-workspaces": {
+    //       "1": [],
+    //       "2": [],
+    //       "3": [],
+    //       "4": [],
+    //       "5": [],
+    //       "10": []
+    //     }
   },
   "tray": {
     "icon-size": 20,

@@ -84,7 +84,8 @@ window#waybar {
 }
 
 #workspaces button:nth-child(3) label {
-  color: #a6da95;
+  /*   color: #a6da95; */
+  color: #aab1d3;
   font-size: 16px;
   margin: 0px 2px;
   background-color: #1e2030;
