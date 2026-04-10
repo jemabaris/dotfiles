@@ -1,6 +1,5 @@
 [tools]
 go = "latest"
-neovim = "stable"
 python = "latest"
 
 [settings]
