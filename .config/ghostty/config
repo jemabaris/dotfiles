@@ -48,12 +48,20 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+
+# Font options
+font-family = MonoLisaNerdFont-Regular
+
+
+
+# Cursor options
 cursor-style = block
 cursor-style-blink = false
-custom-shader = ~/.config/ghostty/shader-playground/public/shaders/cursor_smear.glsl
-custom-shader = ~/.config/ghostty/shaders/bettercrt.glsl
-custom-shader-animation = true
 
+# Custom Shader options
+custom-shader = ~/.config/ghostty/shader-playground/public/shaders/cursor_smear.glsl
+# custom-shader = ~/.config/ghostty/shaders/bettercrt.glsl
+custom-shader-animation = true
 shell-integration-features = no-cursor
 
 # Set Tokyonight theme

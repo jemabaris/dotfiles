@@ -4,6 +4,8 @@
 
 -- leave insert mode by pressing jk quickly
 vim.keymap.set("i", "jk", "<ESC>", { noremap = false })
+-- leave insert mode by pressing jj quickly
+vim.keymap.set("i", "jj", "<ESC>", { noremap = false })
 -- keymapping for accessing the Snacks Dashboard
 vim.keymap.set("n", "<leader>;", Snacks.dashboard.open, { desc = "Open Snacks Dashboard" })
 require("which-key").add({

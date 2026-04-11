@@ -26,15 +26,45 @@
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
+    "wlr/taskbar",
+    "custom/dot",
     "pulseaudio",
     "custom/dot",
     "custom/separator",
     "network",
     "custom/dot",
     "tray",
+    "custom/github",
     "clock",
     "custom/notifications"
   ],
+
+  "custom/launcher": {
+    "format": " 󰣇",
+    "tooltip": "true",
+    "tooltip-format": "Upgrade System",
+    "on-click": "kitty -e btop",
+    "on-click-right": "kitty -e arch-smart-update"
+  },
+
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}% ",
+    "max-length": 10
+    //     "on-click": "htop"
+  },
+  "custom/vram": {
+    "exec": "/usr/bin/env sh -c 'v=$(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | tr \",\" \" \"); set -- $v; printf \"{\\\"text\\\":\\\"󰾲 %d%%\\\",\\\"tooltip\\\":\\\"VRAM: %s / %s MiB\\\"}\\n\" $(( $1 * 100 / $2 )) $1 $2'",
+    "return-type": "json",
+    "interval": 2
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}% ",
+    //     "format-alt": " {used:0.1f}G",
+    "max-length": 10
+    //     "on-click-right": "htop"
+  },
 
   "mpris": {
     "format": "{player_icon}  {title} - {artist}",
@@ -107,11 +137,43 @@
     //       "10": []
     //     }
   },
-  "tray": {
-    "icon-size": 20,
-    "spacing": 8,
-    "show-passive-items": true
+
+  "bluetooth": {
+    "format": "",
+    "format-off": "",
+    "format-on": "",
+    "format-connected": " {device_alias:.9}",
+    "format-connected-battery": " {device_alias:.9} {device_battery_percentage}%",
+    "tooltip": true,
+    "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: {status}",
+    "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nConnected: {device_alias} ({device_address})\nBattery: {device_battery_percentage}%",
+    "on-click": "overskride"
   },
+
+  "wlr/taskbar": {
+    "all-outputs": false,
+    "format": "{icon}",
+    "icon-size": 20,
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+      "kitty",
+      "tidal-hifi",
+      "xwaylandvideobridge",
+      "org.pulseaudio.pavucontrol",
+      "alacritty-dropterm"
+    ],
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
+  },
+
   "custom/filler": {
     "format": " ",
     "tooltip": false
@@ -124,36 +186,25 @@
     "format": ""
   },
 
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8,
+    "show-passive-items": true
+  },
+  "custom/github": {
+    "format": "{} ",
+    "return-type": "json",
+    "interval": 60,
+    "exec": "$HOME/.config/waybar/github.sh",
+    "on-click": "xdg-open https://github.com/notifications"
+  },
+
   "clock": {
     "format": "<b>{:%I:%M %p }</b>",
     "format-alt": "<b>{:%a.%d,%b}</b>",
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
-  "cpu": {
-    "interval": 10,
-    "format": " {usage}% ",
-    "max-length": 10
-    //     "on-click": "htop"
-  },
-  "custom/vram": {
-    "exec": "/usr/bin/env sh -c 'v=$(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | tr \",\" \" \"); set -- $v; printf \"{\\\"text\\\":\\\"󰾲 %d%%\\\",\\\"tooltip\\\":\\\"VRAM: %s / %s MiB\\\"}\\n\" $(( $1 * 100 / $2 )) $1 $2'",
-    "return-type": "json",
-    "interval": 2
-  },
-  "memory": {
-    "interval": 30,
-    "format": " {}% ",
-    //     "format-alt": " {used:0.1f}G",
-    "max-length": 10
-    //     "on-click-right": "htop"
-  },
-  "backlight": {
-    "device": "amdgpu_bl1",
-    "format": "{icon} {percent} ",
-    "tooltip": false,
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
-  },
   "network": {
     "format": "{ifname}",
     "format-wifi": "󰒢 {essid}",
@@ -180,50 +231,6 @@
     //     "on-click-right": "pavucontrol"
     "on-click-right": "pavucontrol",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-  },
-  "battery": {
-    "bat": "BAT0",
-    "interval": 10,
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": " {icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-icons": ["", "", "", "", "", "", "", "", "", ""],
-    "max-length": 25,
-    "tooltip": false
-  },
-  "custom/right-arr": {
-    "format": "  "
-  },
-  "custom/launcher": {
-    "format": " 󰣇",
-    "tooltip": "true",
-    "tooltip-format": "Upgrade System",
-    "on-click": "kitty -e btop",
-    "on-click-right": "kitty -e arch-smart-update"
-  },
-
-  "bluetooth": {
-    "format": "",
-    "format-off": "",
-    "format-on": "",
-    "format-connected": " {device_alias:.9}",
-    "format-connected-battery": " {device_alias:.9} {device_battery_percentage}%",
-    "tooltip": true,
-    "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: {status}",
-    "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nConnected: {device_alias} ({device_address})\nBattery: {device_battery_percentage}%",
-    "on-click": "overskride"
-  },
-
-  "temperature": {
-    "thermal-zone": 0,
-    "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C",
-    "format": " {temperatureC}°C",
-    "tooltip": true,
-    "tooltip-format": "CPU Temperature"
   },
 
   "custom/wrap-left": {
