@@ -30,13 +30,12 @@
     "custom/dot",
     "pulseaudio",
     "custom/dot",
-    "custom/separator",
     "network",
     "custom/dot",
-    "tray",
     "custom/github",
     "custom/vpn",
     "custom/dot",
+    "tray",
     "clock",
     "custom/notifications"
   ],
@@ -191,7 +190,8 @@
   "tray": {
     "icon-size": 20,
     "spacing": 8,
-    "show-passive-items": true
+    "show-passive-items": true,
+    "ignored-iteoms": ["protonvpn-app"]
   },
   "custom/github": {
     "format": "{} ",
@@ -205,8 +205,6 @@
     "interface": "eno1",
     "format": "{ifname}",
     "format-wifi": "󰒢 {essid}",
-    //     "format-alt" : "󰒢 {bandwidthTotalBits}",
-    //     "format-wifi": "󰒢 {bandwidthTotalBits}",
     "format-ethernet": "󰒢 {bandwidthTotalBits}",
     "format-alt": "{ipaddr}",
     "tooltip-format": "{essid} {signalStrength}%",
@@ -224,8 +222,6 @@
     "format-icons": {
       "default": ["", "󰕾", ""]
     },
-    //     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    //     "on-click-right": "pavucontrol"
     "on-click-right": "pavucontrol",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
