@@ -35,6 +35,8 @@
     "custom/dot",
     "tray",
     "custom/github",
+    "custom/vpn",
+    "custom/dot",
     "clock",
     "custom/notifications"
   ],
@@ -199,13 +201,8 @@
     "on-click": "xdg-open https://github.com/notifications"
   },
 
-  "clock": {
-    "format": "<b>{:%I:%M %p }</b>",
-    "format-alt": "<b>{:%a.%d,%b}</b>",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-
   "network": {
+    "interface": "eno1",
     "format": "{ifname}",
     "format-wifi": "󰒢 {essid}",
     //     "format-alt" : "󰒢 {bandwidthTotalBits}",
@@ -240,6 +237,21 @@
   "custom/wrap-right": {
     "format": "<b>]</b>"
   },
+
+  "custom/vpn": {
+    "exec": "if [ -d /proc/sys/net/ipv4/conf/proton0 ]; then echo '{\"text\":\"VPN \",\"class\":\"connected\"}'; else echo '{\"text\":\"VPN \",\"class\":\"disconnected\"}'; fi",
+    "interval": 5,
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "bash -c 'if [ -d /proc/sys/net/ipv4/conf/proton0 ]; then nmcli connection down \"$(nmcli -t -f NAME,DEVICE connection show --active | grep proton0 | cut -d: -f1)\"; else nmcli connection up \"$(nmcli -t -f NAME,TYPE connection show | grep wireguard | tail -1 | cut -d: -f1)\"; fi'"
+  },
+
+  "clock": {
+    "format": "<b>{:%I:%M %p }</b>",
+    "format-alt": "<b>{:%a.%d,%b}</b>",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
   "custom/notifications": {
     "tooltip": true,
     "format": "<span size='14pt'>{icon}</span>",
