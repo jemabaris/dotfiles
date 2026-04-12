@@ -239,11 +239,11 @@
   },
 
   "custom/vpn": {
-    "exec": "if [ -d /proc/sys/net/ipv4/conf/proton0 ]; then echo '{\"text\":\"VPN \",\"class\":\"connected\"}'; else echo '{\"text\":\"VPN \",\"class\":\"disconnected\"}'; fi",
+    "exec": "~/.config/waybar/vpn-status.sh",
     "interval": 5,
     "format": "{}",
     "return-type": "json",
-    "on-click": "bash -c 'if [ -d /proc/sys/net/ipv4/conf/proton0 ]; then nmcli connection down \"$(nmcli -t -f NAME,DEVICE connection show --active | grep proton0 | cut -d: -f1)\"; else nmcli connection up \"$(nmcli -t -f NAME,TYPE connection show | grep wireguard | tail -1 | cut -d: -f1)\"; fi'"
+    "on-click": "~/.config/waybar/vpn-toggle.sh"
   },
 
   "clock": {
