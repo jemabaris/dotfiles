@@ -245,10 +245,17 @@ export FZF_DEFAULT_OPTS='
 ###################
 # FZF commandlets #
 ###################
-# cd into a directory using fzf
+# cd into a sub-directory using fzf
 cdf() {
   local dir
   dir=$(find . -type d | fzf --preview 'ls -la {}')
+  [ -n "$dir" ] && cd "$dir"
+}
+
+# cd into any directory in the home folder using fzf
+cdfh() {
+  local dir
+  dir=$(find ~ -type d 2>/dev/null | fzf --preview 'ls -la {}')
   [ -n "$dir" ] && cd "$dir"
 }
 
@@ -262,8 +269,8 @@ vif() {
 # Kill a process using fzf
 fkill() {
   local pid
-  pid=$(ps aux | fzf --header-lines=1 | awk '{print $2}')
-  [ -n "$pid" ] && kill -9 "$pid"
+  pid=$(ps aux | fzf --header-lines=1 --reverse --height=40% | awk '{print $2}')
+  [ -n "$pid" ] && kill -${1:-9} "$pid" && echo "Killed PID $pid"
 }
 
 # Git checkout using fzf
@@ -272,8 +279,6 @@ gcof() {
   branch=$(git branch --all | fzf | tr -d '[:space:]*')
   [ -n "$branch" ] && git checkout "$branch"
 }
-
-
 
 
 #################
