@@ -7,12 +7,8 @@ return {
     legacy_commands = false, -- this will be removed in the next major release
     workspaces = {
       {
-        name = "personal",
-        path = "~/vaults/personal",
-      },
-      {
-        name = "work",
-        path = "~/vaults/work",
+        name = "Janis' Vault",
+        path = "~/Documents/Obsidian_Vault/",
       },
     },
   },
