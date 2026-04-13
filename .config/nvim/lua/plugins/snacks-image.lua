@@ -4,9 +4,6 @@ return {
     opts = {
       image = {
         enabled = true,
-        render = {
-          enabled = true,
-        },
       },
     },
   },
