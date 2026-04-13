@@ -239,7 +239,8 @@
     "interval": 5,
     "format": "{}",
     "return-type": "json",
-    "on-click": "~/.config/waybar/vpn-toggle.sh"
+    "on-click": "~/.config/waybar/vpn-toggle.sh",
+    "on-click-right": "protonvpn-app"
   },
 
   "clock": {
