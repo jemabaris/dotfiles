@@ -160,6 +160,7 @@
     "on-click": "activate",
     "on-click-middle": "close",
     "ignore-list": [
+      "obsidian",
       "kitty",
       "tidal-hifi",
       "xwaylandvideobridge",
@@ -191,7 +192,7 @@
     "icon-size": 20,
     "spacing": 8,
     "show-passive-items": true,
-    "ignored-iteoms": ["protonvpn-app"]
+    "ignored-items": ["protonvpn-app"]
   },
   "custom/github": {
     "format": "{} ",
