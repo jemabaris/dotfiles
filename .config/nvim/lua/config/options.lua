@@ -23,3 +23,6 @@ end)
 --   -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
 --   jump = { float = true },
 -- })
+-- Modelines
+vim.opt.modeline = true
+vim.opt.modelines = 5

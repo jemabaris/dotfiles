@@ -242,6 +242,39 @@ export FZF_DEFAULT_OPTS='
 --color=separator:#ff966c
 --color=spinner:#ff007c'
 
+###################
+# FZF commandlets #
+###################
+# cd into a directory using fzf
+cdf() {
+  local dir
+  dir=$(find . -type d | fzf --preview 'ls -la {}')
+  [ -n "$dir" ] && cd "$dir"
+}
+
+# Open a file in nvim using fzf
+vif() {
+  local file
+  file=$(fzf --preview 'bat --color=always --line-range :100 {}')
+  [ -n "$file" ] && nvim "$file"
+}
+
+# Kill a process using fzf
+fkill() {
+  local pid
+  pid=$(ps aux | fzf --header-lines=1 | awk '{print $2}')
+  [ -n "$pid" ] && kill -9 "$pid"
+}
+
+# Git checkout using fzf
+gcof() {
+  local branch
+  branch=$(git branch --all | fzf | tr -d '[:space:]*')
+  [ -n "$branch" ] && git checkout "$branch"
+}
+
+
+
 
 #################
 # Powerlevel10k #

@@ -61,3 +61,8 @@ vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
 vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
 vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
 vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
+
+-- Accept Copilot suggestion (works even when Blink suggestions are visible)
+vim.keymap.set("i", "<M-CR>", function()
+  vim.lsp.inline_completion.get()
+end, { desc = "Accept Copilot suggestion" })
