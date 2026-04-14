@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$HOME/.local/bin/pkg-scripts"
+declare -A scripts=(
+  ["󱧘   Install Package"]="pkg-install"
+  ["󱧙   Remove Package"]="pkg-remove"
+  ["󱧘   Install AUR Package"]="pkg-aur-install"
+  ["󱧙   Remove AUR Package"]="pkg-aur-remove"
+)
+choice=$(
+  printf "%s\n" "${!scripts[@]}" |
+    sort |
+    rofi -dmenu -i -theme "$HOME/rofi-collection/theme.rasi"
+)
+[ -z "$choice" ] && exit 0
+script="${scripts[$choice]}"
+kitty --title scratchpad -e "$SCRIPT_DIR/$script"
