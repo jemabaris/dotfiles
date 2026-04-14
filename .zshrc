@@ -100,6 +100,7 @@ alias record='gpu-screen-recorder-gtk'
 alias s='sesh connect $(sesh list | fzf)'
 alias deepseek='ollama run deepseek-r1:32b'
 alias claude='openclaude'
+alias kitty-float=hyprctl dispatch exec "[workspace special:terminal silent] kitty --title scratchpad"
 # alias remotty= "kitty -o allow_remote_control=yes"
 
 # Add ChrisTitus Aliases
