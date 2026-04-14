@@ -4,7 +4,7 @@ declare -A scripts=(
   ["󱧘   Install Package"]="pkg-install"
   ["󱧙   Remove Package"]="pkg-remove"
   ["󱧘   Install AUR Package"]="pkg-aur-install"
-  ["󱧙   Remove AUR Package"]="pkg-aur-remove"
+  #   ["󱧙   Remove AUR Package"]="pkg-aur-remove"
 )
 choice=$(
   printf "%s\n" "${!scripts[@]}" |
