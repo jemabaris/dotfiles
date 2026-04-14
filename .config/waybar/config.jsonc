@@ -32,11 +32,11 @@
     "custom/dot",
     "network",
     "custom/dot",
-    "custom/github",
     "custom/vpn",
     "custom/dot",
     "tray",
     "clock",
+    "custom/github",
     "custom/notifications"
   ],
 
@@ -195,11 +195,12 @@
     "ignored-items": ["protonvpn-app"]
   },
   "custom/github": {
-    "format": "{} ",
+    "format": "  {}",
     "return-type": "json",
     "interval": 60,
     "exec": "$HOME/.config/waybar/github.sh",
-    "on-click": "xdg-open https://github.com/notifications"
+    "on-click": "xdg-open https://github.com/notifications",
+    "tooltip": false
   },
 
   "network": {
