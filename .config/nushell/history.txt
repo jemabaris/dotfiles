@@ -150,3 +150,8 @@ exit
 echo 1
 clear
 ls
+cd dotfiles/
+ls
+ls -a
+cd rofi-collection/
+exit
