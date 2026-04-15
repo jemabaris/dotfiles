@@ -204,27 +204,13 @@ export FZF_DEFAULT_OPTS='
 --height 80%
 --layout=reverse
 --border
---preview-window=right:60%:wrap
---bind ctrl-/:toggle-preview
---bind ctrl-d:preview-half-page-down
---bind ctrl-u:preview-half-page-up
---preview "
-if [ -d {} ]; then
-  eza --tree --level=2 --color=always {};
-else
-  bat --color=always --style=numbers --line-range=:500 {} 2>/dev/null || file {};
-fi
-"'
-
-export FZF_DEFAULT_OPTS='
---height 80%
---layout=reverse
---border
---preview-window=right:60%:wrap
---bind ctrl-/:toggle-preview
---bind ctrl-d:preview-half-page-down
---bind ctrl-u:preview-half-page-up
+--preview-window=right:65%:wrap
+--preview-label="alt-p: toggle description, alt-j/k: scroll"
+--preview-label-pos=bottom
 --preview "~/.config/fzf/preview.sh {}"
+--bind 'alt-p:toggle-preview'
+--bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
+--bind 'alt-k:preview-up,alt-j:preview-down'
 --highlight-line
 --color=bg+:#2d3f76
 --color=bg:#1e2030
