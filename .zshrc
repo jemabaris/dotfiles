@@ -21,10 +21,16 @@ fi
 [ -f ~/dotfiles/secrets/.secrets ] && source ~/dotfiles/secrets/.secrets
 
 
-#####################
-# Special Functions #
-#####################
-
+##############################
+# Activate manim virtual env #
+##############################
+manim-activate() {
+  if [ -d ".venv" ]; then
+    source .venv/bin/activate
+  else 
+    echo "No .venv found in the current directory."
+  fi
+}
 
 #####################
 # Special Functions #
