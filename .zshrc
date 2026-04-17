@@ -1,7 +1,9 @@
 #############
 # Add fetch #
 #############
-fastfetch
+if [[ $- == *i* && -z $TMUX ]]; then
+  fastfetch
+fi
 # nitch
 
 
