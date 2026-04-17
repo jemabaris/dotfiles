@@ -470,10 +470,17 @@ eval $(thefuck --alias fk)
 #############################
 # ENABLE_CORRECTION="false"
 
+###########
+# Widgets #
+###########
+# Copy current command to clipboard
+copy-command() {
+  print -rn -- $BUFFER | wl-copy
+}
+zle -N copy-command
+bindkey '^Xc' copy-command
 
-######################
-# yazi shell wrapper #
-######################
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"

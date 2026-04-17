@@ -50,7 +50,15 @@
 
 
 # Font options
-font-family = MonoLisaNerdFont-Regular
+# font-family = "JetBrainsMono Nerd Font"
+# font-family = "BlexMono Nerd Font Mono"
+# font-family = "FiraCode Nerd Font Mono"
+font-family = "MonoLisa"
+# font-style = "Medium"
+font-family-bold = "MonoLisa"
+font-family-italic = "MonoLisa"
+font-family-bold-italic = "MonoLisa"
+font-size = 13
 
 
 
@@ -66,5 +74,13 @@ shell-integration-features = no-cursor
 
 # Set Tokyonight theme
 theme = "TokyoNight Moon"
+
+# Set the background opacity
+background-opacity = 0.85
+
+# Set window padding
+window-padding-x = 12
+window-padding-y = 20
+
 
 confirm-close-surface = false
