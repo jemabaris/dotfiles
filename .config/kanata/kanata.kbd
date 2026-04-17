@@ -10,7 +10,7 @@
   hold-time 200
 )
 (defalias
-  escctrl (tap-hold 100 100 esc (multi lmet lalt lsft lctl))
+  escctrl (tap-hold 200 200 esc (multi lmet lalt lsft lctl))
   a (tap-hold $tap-time $hold-time a lmet)
   s (tap-hold $tap-time $hold-time s lalt)
   d (tap-hold $tap-time $hold-time d lsft)

@@ -32,13 +32,17 @@ manim-activate() {
   fi
 }
 
-#####################
-# Special Functions #
-#####################
+###################
+# Claude Code env #
+###################
 export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_BASE_URL=http://localhost:11434/v1
 export OPENAI_MODEL=gemma4:31b
 
+##################
+# minimax neovim #
+##################
+alias minimax="NVIM_APPNAME=nvim-minimax nvim"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -273,6 +277,129 @@ gcof() {
   [ -n "$branch" ] && git checkout "$branch"
 }
 
+# Open files using fzf and xdg-open
+fopen() {
+  local root="${1:-$PWD}"
+  local show_hidden=false
+
+  if [[ "$1" == "-a" ]]; then
+    show_hidden=true
+    root="${2:-$PWD}"
+  fi
+
+  local fzf_input
+  if command -v fd &>/dev/null; then
+    if $show_hidden; then
+      fzf_input="fd --type f --hidden --follow . \"$root\""
+    else
+      fzf_input="fd --type f --follow . \"$root\""
+    fi
+  else
+    if $show_hidden; then
+      fzf_input="find \"$root\" -type f 2>/dev/null"
+    else
+      fzf_input="find \"$root\" -type f -not -path '*/\.*' 2>/dev/null"
+    fi
+  fi
+
+  # write preview scripts to temp files so fzf can reliably swap between them
+  local preview_default_script
+  preview_default_script=$(mktemp /tmp/fopen_preview_XXXXXX.sh)
+  cat > "$preview_default_script" << 'EOF'
+mime=$(file --mime-type -b "$1")
+case "$mime" in
+  video/*)
+    echo "video: $(basename "$1")"
+    echo ""
+    ffprobe -v quiet -print_format json -show_format "$1" 2>/dev/null \
+      | grep -E '(duration|size|bit_rate)' \
+      | sed 's/[",]//g; s/^ *//'
+    echo ""
+    echo "[ctrl-t: load thumbnail]"
+    ;;
+  image/*)
+    if command -v kitty &>/dev/null; then
+      kitty icat --clear --transfer-mode=memory --stdin=no "$1" 2>/dev/null
+    elif command -v viu &>/dev/null; then
+      viu "$1" 2>/dev/null
+    elif command -v chafa &>/dev/null; then
+      chafa "$1" 2>/dev/null
+    fi
+    ;;
+  *)
+    bat --style=numbers --color=always "$1" 2>/dev/null || cat "$1"
+    ;;
+esac
+EOF
+  chmod +x "$preview_default_script"
+
+  local preview_video_script
+  preview_video_script=$(mktemp /tmp/fopen_preview_XXXXXX.sh)
+  cat > "$preview_video_script" << 'EOF'
+mime=$(file --mime-type -b "$1")
+case "$mime" in
+  video/*)
+    tmp=$(mktemp /tmp/fopen_thumb_XXXXXX.jpg)
+    ffmpegthumbnailer -i "$1" -o "$tmp" -s 0 -q 5 2>/dev/null
+    if command -v kitty &>/dev/null; then
+      kitty icat --clear --transfer-mode=memory --stdin=no "$tmp" 2>/dev/null
+    elif command -v viu &>/dev/null; then
+      viu "$tmp" 2>/dev/null
+    elif command -v chafa &>/dev/null; then
+      chafa "$tmp" 2>/dev/null
+    fi
+    rm -f "$tmp"
+    echo "[ctrl-g: hide thumbnail]"
+    ;;
+  image/*)
+    if command -v kitty &>/dev/null; then
+      kitty icat --clear --transfer-mode=memory --stdin=no "$1" 2>/dev/null
+    elif command -v viu &>/dev/null; then
+      viu "$1" 2>/dev/null
+    elif command -v chafa &>/dev/null; then
+      chafa "$1" 2>/dev/null
+    fi
+    ;;
+  *)
+    bat --style=numbers --color=always "$1" 2>/dev/null || cat "$1"
+    ;;
+esac
+EOF
+  chmod +x "$preview_video_script"
+
+  local label_default=' alt-p: toggle preview  alt-j/k: scroll  ctrl-t: video thumb '
+  local label_with_video=' alt-p: toggle preview  alt-j/k: scroll  ctrl-g: hide video thumb '
+
+  local selected
+  selected=$(
+    FZF_DEFAULT_COMMAND="$fzf_input" \
+    fzf --multi \
+        --prompt=' open: ' \
+        --preview="bash $preview_default_script {}" \
+        --preview-window='right:55%:wrap' \
+        --preview-label="$label_default" \
+        --preview-label-pos=bottom \
+        --bind "ctrl-t:change-preview(bash $preview_video_script {})+change-preview-label($label_with_video)" \
+        --bind "ctrl-g:change-preview(bash $preview_default_script {})+change-preview-label($label_default)" \
+        --bind 'alt-p:toggle-preview' \
+        --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up' \
+        --bind 'alt-k:preview-up,alt-j:preview-down'
+  )
+
+  # clear any lingering kitty image after fzf exits
+  if command -v kitty &>/dev/null; then
+    kitty icat --clear 2>/dev/null
+  fi
+
+  # clean up temp scripts
+  rm -f "$preview_default_script" "$preview_video_script"
+
+  [[ -z "$selected" ]] && return 0
+
+  while IFS= read -r file; do
+    xdg-open "$file" &
+  done <<< "$selected"
+}
 
 #################
 # Powerlevel10k #
