@@ -100,6 +100,41 @@ t() {
   tmux attach 2>/dev/null || tmux new-session
 }
 
+# Attach to tmux session using sesh and g
+t-gum() {
+  sesh connect "$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='⚡ ')"
+}
+
+# Pick existing tmux session with pizzazz!
+t-pick() {
+  # Colorful header
+  gum style \
+    --border double \
+    --border-foreground 212 \
+    --foreground 212 \
+    --padding "0 2" \
+    --bold \
+    "⚡ TMUX SESSION PICKER"
+
+  # Pick a session
+  local session=$(tmux list-sessions -F "#{session_name}  #{session_windows} windows  [#{session_attached} attached]" \
+    | gum filter \
+        --placeholder "Search sessions..." \
+        --prompt "  " \
+        --height 10 \
+    | awk '{print $1}')
+
+  [[ -z "$session" ]] && return
+
+  # Attach or switch depending on context
+  if [[ -n "$TMUX" ]]; then
+    tmux switch-client -t "$session"
+  else
+    tmux attach-session -t "$session"
+  fi
+}
+
+
 ###############
 # Add Aliases #
 ###############
@@ -268,9 +303,10 @@ vif() {
 
 # Kill a process using fzf
 fkill() {
-  local pid
+  local pid sig
+  sig=${1#-}  # strip leading dash if present
   pid=$(ps aux | fzf --header-lines=1 --reverse --height=40% | awk '{print $2}')
-  [ -n "$pid" ] && kill -${1:-9} "$pid" && echo "Killed PID $pid"
+  [ -n "$pid" ] && kill -${sig:-9} "$pid" && echo "Killed PID $pid"
 }
 
 # Git checkout using fzf
