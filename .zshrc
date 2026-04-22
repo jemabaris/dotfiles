@@ -511,8 +511,16 @@ eval $(thefuck --alias fk)
 # Widgets #
 ###########
 # Copy current command to clipboard
+# copy-command() {
+#   print -rn -- $BUFFER | wl-copy
+# }
+# zle -N copy-command
+# bindkey '^Xc' copy-command
+
+
 copy-command() {
   print -rn -- $BUFFER | wl-copy
+  zle -M "Copied to clipboard"
 }
 zle -N copy-command
 bindkey '^Xc' copy-command
