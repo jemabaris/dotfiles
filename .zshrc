@@ -1,9 +1,10 @@
 #############
 # Add fetch #
 #############
-if [[ $- == *i* && -z $TMUX ]]; then
-  fastfetch
-fi
+# if [[ $- == *i* && -z $TMUX ]]; then
+#   fastfetch
+# fi
+
 # nitch
 
 
@@ -40,6 +41,12 @@ manim-activate() {
 export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_BASE_URL=http://localhost:11434/v1
 export OPENAI_MODEL=gemma4:31b
+
+
+#########################
+# Environment variables #
+#########################
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 ##################
 # minimax neovim #
