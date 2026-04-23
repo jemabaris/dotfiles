@@ -1,0 +1,8 @@
+#!/bin/bash
+if systemctl --user is-active --quiet kanata; then
+  systemctl --user stop kanata
+  notify-send "Kanata" "Home Row Mods disabled" --icon=input-keyboard
+else
+  systemctl --user start kanata
+  notify-send "Kanata" "Home Row Mods enabled" --icon=input-keyboard
+fi

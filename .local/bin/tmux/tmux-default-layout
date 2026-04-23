@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+tmux new-session -d -s dev -n neovim
+
+tmux send-keys -t dev:0 "nvim" C-m
+
+tmux split-window -h -t dev:0
+tmux split-window -v -t dev:0.1
+tmux select-layout -t dev:0 even-horizontal
+tmux resize-pane -t dev:0.0 -x 70%
+
+tmux new-window -t dev -n terminal
+tmux split-window -v -t dev:1
+
+tmux new-window -t dev -n yazi
+tmux send-keys -t dev:2 "yazi" C-m
+
+tmux new-window -t dev -n music
+tmux send-keys -t dev:3 "sleep 0.2 && rmpc" C-m
+
+tmux select-window -t dev:0
+tmux attach -t dev
