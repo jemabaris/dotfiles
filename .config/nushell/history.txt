@@ -155,3 +155,9 @@ ls
 ls -a
 cd rofi-collection/
 exit
+ls
+ls | which | libp
+ls | where name starts-with "libp"
+exit
+openhue get lights
+exit

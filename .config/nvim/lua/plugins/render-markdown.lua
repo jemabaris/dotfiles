@@ -6,7 +6,8 @@ return {
     opts = {
       render_modes = { "n", "c", "t" },
       latex = {
-        converter = "latex2text",
+        --         converter = "latex2text",
+        enabled = true,
       },
       heading = {
         enabled = true,

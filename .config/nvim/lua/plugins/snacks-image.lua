@@ -3,6 +3,9 @@ return {
     "folke/snacks.nvim",
     opts = {
       image = {
+        math = {
+          enabled = false,
+        },
         enabled = true,
         resolve = function(path, src)
           local ok, api = pcall(require, "obsidian.api")
