@@ -229,12 +229,12 @@ alias lb='eza -lah --sort=size --icons' # show biggest files
 alias lr='eza -lahR --icons' # show everything recursively
 
 # Search command line history
-alias h="history 0 | grep "
+alias h='history 0 | grep '
 # Search running processes
-alias p="ps aux | grep -i"
+alias p='ps aux | grep -i'
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 # Search files in the current folder
-alias f="find . | grep "
+alias f='find . | grep '
 # Count all files (recursively) in the current folder
 alias countfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
 # To see if a command is aliased, a file, or a built-in command
@@ -281,9 +281,9 @@ export FZF_DEFAULT_OPTS='
 --preview-label="alt-p: toggle description, alt-j/k: scroll"
 --preview-label-pos=bottom
 --preview "~/.config/fzf/preview.sh {}"
---bind 'alt-p:toggle-preview'
---bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
---bind 'alt-k:preview-up,alt-j:preview-down'
+--bind "alt-p:toggle-preview"
+--bind "alt-d:preview-half-page-down,alt-u:preview-half-page-up"
+--bind "alt-k:preview-up,alt-j:preview-down"
 --highlight-line
 --color=bg+:#2d3f76
 --color=bg:#1e2030
@@ -465,6 +465,16 @@ EOF
   done <<< "$selected"
 }
 
+
+############################
+# Vicinae Wallpaper Picker #
+############################
+wllppr() {
+    local selected
+    selected=$(find ~/Pictures/Wallpapers -type f | vicinae dmenu -p "Pick a Wallpaper")
+    [[ -n "$selected" ]] && awww img "$selected"
+}
+
 #################
 # Powerlevel10k #
 #################
@@ -552,7 +562,7 @@ bindkey '^Xc' copy-command
 
 
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	local tmp="$(mktemp -t 'yazi-cwd.XXXXXX')" cwd
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
