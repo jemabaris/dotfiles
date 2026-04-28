@@ -1,0 +1,5 @@
+# ~/.config/hypr/hyprland.conf
+
+misc {
+    focus_on_activate = true
+}
