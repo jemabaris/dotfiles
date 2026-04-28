@@ -15,7 +15,7 @@ require("which-key").add({
 -- # Janis Custom Setup to quickly run current Python file in a terminal
 vim.keymap.set("n", "<localleader>rp", function()
   vim.cmd("write")
-  vim.cmd("belowright 20split")
+  vim.cmd("belowright split")
   vim.cmd("terminal python " .. vim.fn.expand("%"))
 end, { desc = "Run Python File" })
 -- # Janis Custom Setup to quickly run current file in a terminal
@@ -32,7 +32,6 @@ end, { desc = "Run Lua File" })
 --     end
 -- end, { desc = "Clear Copilot suggestion or fallback" })
 
--- # Jump to middle of current line JR
 vim.keymap.set("n", "gm", function()
   local line = vim.api.nvim_get_current_line()
   local col = math.floor(#line / 2)
@@ -65,4 +64,10 @@ vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 -- Accept Copilot suggestion (works even when Blink suggestions are visible)
 vim.keymap.set("i", "<M-CR>", function()
   vim.lsp.inline_completion.get()
-end, { desc = "Accept Copilot suggestion" })
+end, { desc = "Accep Copilot suggestion" })
+
+-- Keymap to mark all lines in visual mode
+vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select all" })
+
+-- Keymap to copy all lines to system clipboard
+vim.keymap.set("n", "yc", ":%y+<CR>", { desc = "Yank all to clipboard" })

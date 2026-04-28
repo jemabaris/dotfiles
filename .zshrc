@@ -18,6 +18,22 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+##########################
+# Kitty shell-integration#
+##########################
+if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
+  export KITTY_SHELL_INTEGRATION="enabled"
+  autoload -Uz -- "$KITTY_INSTALLATION_DIR/shell-integration/zsh/kitty-integration"
+  kitty-integration
+  unfunction kitty-integration
+fi
+
+if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
+    _ksi_ps1_fix() {
+        builtin print -nu $_ksi_fd $'\e]133;A\a'
+    }
+    precmd_functions+=(_ksi_ps1_fix)
+fi
 ##################
 # Source secrets #
 ##################
