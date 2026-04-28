@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# @vicinae.schemaVersion 1
+# @vicinae.title My Script
+# @vicinae.mode fullOutput
+
+
+awww img $(find ~/Pictures/Wallpapers -type f | vicinae dmenu -p 'Pick a Wallpaper')
+
