@@ -200,8 +200,8 @@ alias lsd='eza --icons --group-directories-first' # long listing
 alias lt='eza --tree --icons --level=2' # tree view
 alias lta='eza --tree --icons' # tree view
 alias ll='eza -lah --color-scale=size --color-scale-mode=gradient --icons --group-directories-first' # long listing
-alias lf='eza -lah --only-files' # files only
-alias ld='eza -lah --only-dirs' # directories only
+alias lf='eza -lah --icons --only-files' # files only
+alias ld='eza -lah --icons --only-dirs' # directories only
 alias lS='eza -lah --sort=size --color-scale=size --color-scale-mode=gradient --icons --group-directories-first' # sorted by size
 alias lg='eza -lah --git --icons' # git-aware listing # git-aware listing
 
