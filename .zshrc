@@ -174,6 +174,7 @@ alias kitty-float=hyprctl dispatch exec "[workspace special:terminal silent] kit
 alias ts='sesh connect $(sesh list | fzf)'
 alias dash="gh dash"
 alias tidal='lumitide'
+alias hackernews='cle'
 # alias remotty= "kitty -o allow_remote_control=yes"
 
 # Add ChrisTitus Aliases
