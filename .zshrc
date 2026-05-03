@@ -123,13 +123,13 @@ t() {
   tmux attach 2>/dev/null || tmux new-session
 }
 
-# Attach to tmux session using sesh and g
-t-gum() {
+# Attach to tmux session using sesh and gum
+tg() {
   sesh connect "$(sesh list -i | gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='⚡ ')"
 }
 
-# Pick existing tmux session with pizzazz!
-t-pick() {
+# Attach to existing tmux session with pizzazz!
+ta() {
   # Colorful header
   gum style \
     --border double \
@@ -171,10 +171,12 @@ alias s='sesh connect $(sesh list | fzf)'
 alias deepseek='ollama run deepseek-r1:32b'
 alias claude='openclaude'
 alias kitty-float=hyprctl dispatch exec "[workspace special:terminal silent] kitty --title scratchpad"
-alias ts='sesh connect $(sesh list | fzf)'
 alias dash="gh dash"
 alias tidal='lumitide'
 alias hackernews='cle'
+alias ts='sesh connect $(sesh list | fzf)' # Attach to existing session or create new one using sesh and fzf
+# You can also use ta (tmux attach) to attach to alrady runnings sessions with gum
+# You can also tg (Mostly simmilar to ta but uses sesh and gum instead of fzf)
 # alias remotty= "kitty -o allow_remote_control=yes"
 
 # Add ChrisTitus Aliases
