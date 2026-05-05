@@ -1,0 +1,24 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/qwen3.6:35b-a3b",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3.6:35b-a3b": {
+          "name": "Qwen3.6 35B"
+        },
+        "deepseek-r1:32b": {
+          "name": "DeepSeek R1 32B"
+        },
+        "gemma4:31b": {
+          "name": "Gemma4 31B"
+        }
+      }
+    }
+  }
+}

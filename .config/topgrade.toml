@@ -5,7 +5,7 @@
 # paths = ["/etc/topgrade.toml"]
 
 # jr disabled package managers
-[disanle]
+[disable]
 snap = true
 
 
