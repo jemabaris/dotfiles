@@ -4,12 +4,9 @@
 [include]
 # paths = ["/etc/topgrade.toml"]
 
-# jr disabled package managers
-[disable]
-snap = true
-
-
 [misc]
+
+disable = ["snap"]
 # On Unix systems, Topgrade should not be run as root, it
 # will run commands with sudo or equivalent where needed.
 # Set this to true to suppress the warning and confirmation

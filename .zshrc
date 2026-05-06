@@ -56,7 +56,8 @@ manim-activate() {
 ###################
 export CLAUDE_CODE_USE_OPENAI=1
 export OPENAI_BASE_URL=http://localhost:11434/v1
-export OPENAI_MODEL=gemma4:31b
+export OPENAI_MODEL=qwen3.6:35b-a3b
+# export OPENAI_MODEL=gemma4:31b
 
 
 #########################

@@ -1,64 +1,111 @@
-# ❄️ Arch Linux Dotfiles
+# 🚀 janis's dotfiles
 
-Welcome to my dotfiles repository! This is a collection of configuration files for my Arch Linux environment.
+> A curated collection of configuration files for my personal Arch Linux workstation.
+> Feel free to browse, borrow, and adapt whatever you find useful!
 
-## 🚀 Overview
+## Contents
 
-This setup is designed for a modern, tiling window manager experience on Wayland, focusing on efficiency, aesthetics, and productivity.
+### 🐚 Shell & CLI
+| File | App |
+|---|---|
+| `~/.zshrc` | [Zsh](https://www.zsh.dev/) — main shell config |
+| `~/.p10k.zsh` | [Powerlevel10k](https://github.com/romkatv/powerlevel10k) — prompt style (p10k) |
+| `~/.config/fzf/` | [fzf](https://github.com/junegunn/fzf) — fuzzy finder defaults |
+| `~/.config/eza/` | [eza](https://github.com/eza-community/eza) — modern `ls` replacement |
+| `~/.config/starship/` | [Starship](https://starship.rs/) — cross-shell prompt |
+| `~/.config/gh-dash/` | [gh-dash](https://github.com/dlvhdr/gh-dash) — PR/dash display |
+| `~/.config/clipboard/` | [Clipboard](https://github.com/bugga/clipse) — clipboard management |
+| `~/.config/espanso/` | [espanso](https://espanso.org/) — text expander |
+| `~/.config/kanata/` | [Kanata](https://github.com/jtroo/kanata) — key remapper / macro tool |
+| `~/.config/fastfetch/` | [fastfetch](https://github.com/fastfetch-cli/fastfetch) — system info display |
+| `~/.config/mise/` | [mise](https://mise.jdx.dev/) — dev runtime manager |
+| `~/.config/yay/` | [yay](https://github.com/Jguer/yay) — AUR helper config |
+| `~/.local/bin/` | Custom helper scripts |
 
-## 🛠️ Core Components
+### 🖥 Terminal Emulators
+| File / Dir | App |
+|---|---|
+| `~/.wezterm.lua` | [WezTerm](https://wezfurlong.org/wezterm/) — GPU-accelerated terminal |
+| `~/.config/ghostty/` | [Ghostty](https://ghostty.org/) — Apple-designed terminal |
+| `~/.config/kitty/` | [kitty](https://sw.kovidgoyal.net/kitty/) — GPU terminal |
 
-### 🖥️ Window Management & UI
-- **Hyprland**: Dynamic tiling Wayland compositor.
-- **Waybar**: Highly customizable status bar.
-- **Rofi**: Window switcher and application launcher (includes custom collection).
-- **GTK 3.0/4.0**: Specialized GTK theme and settings for visual consistency.
+### 🪟 Window Manager (Hyprland)
+| File / Dir | App |
+|---|---|
+| `~/.config/hypr/` | [Hyprland](https://hyprland.org/) — wayland compositor & window manager |
+| `~/.config/hyprshell/` | Custom Hyprland helper scripts |
+| `~/.config/waybar/` | [Waybar](https://github.com/Alexays/Waybar) — status bar |
+| `~/.config/gtk-3.0/` / `~/.config/gtk-4.0/` | GTK 3 & GTK 4 theme & icon config |
+| `~/.config/themes/` | Shared color themes |
 
-### 🐚 Shell & Terminal
-- **Zsh**: Primary shell featuring:
-  - **Starship**: Fast, customizable shell prompt.
-  - **Powerlevel10k**: Advanced prompt configuration (`.p10k.zsh`).
-  - **Fzf**: General-purpose command-line fuzzy finder.
-- **Nushell**: A modern shell with a structured data approach.
-- **Terminals**:
-  - **Kitty**: Feature-rich, GPU-accelerated terminal.
-  - **Ghostty**: High-performance terminal emulator.
-  - **WezTerm**: Multiplexing terminal emulator (`.wezterm.lua`).
+### 📝 Editors
+| File / Dir | App |
+|---|---|
+| `~/.config/nvim/` | [Neovim](https://neovim.io/) — editor (LazyVim distro) |
+| `~/.config/zed/` | [Zed](https://zed.dev/) — high-performance code editor |
+| `~/.config/zellij/` | [Zellij](https://zellij.dev/) — terminal workspace / pane manager |
 
-### ✍️ Editors & IDEs
-- **Neovim**: Configured with **LazyVim** for a full IDE-like experience.
-- **Zed**: High-performance multi-player code editor.
+### 🎨 Picker & Menu
+| File / Dir | App |
+|---|---|
+| `~/.config/rofi/` | [Rofi](https://github.com/DavYd-rofi/rofi) launcher |
+| `~/rofi-collection/` | Expanded Rofi theme library & themes |
 
-### 📦 Multiplexers & File Managers
-- **Tmux**: Terminal multiplexer (`.tmux.conf`).
-- **Zellij**: Rust-based terminal workspace manager.
-- **Yazi**: Blazing fast terminal file manager.
-- **Superfile**: Intuitive terminal file manager.
+### 🎵 Media
+| File / Dir | App |
+|---|---|
+| `~/.config/mpd/` | [MPD](https://www.musicpd.org/) — music player daemon |
+| `~/.config/cava/` | [cava](https://github.com/karlstav/cava) — console audio visualizer |
+| `~/.config/rmpc/` | [rmpc](https://github.com/mimsy/rmpc) — ncurses MPD client |
 
-### ⚙️ Utilities & Tools
-- **Mise**: Tool version manager.
-- **Eza**: A modern replacement for `ls`.
-- **Fastfetch**: System information tool.
-- **Gh-dash**: GitHub dashboard for the terminal.
-- **Espanso**: Text expander for automation.
-- **Kanata**: Keyboard remapper for ergonomic layouts.
-- **Yay**: AUR helper configuration.
+### 📂 File Manager
+| File / Dir | App |
+|---|---|
+| `~/.config/yazi/` | [yazi](https://yazi.dev/) — terminal file manager |
+| `~/.config/superfile/` | [superfile](https://github.com/yorukot/superfile) — another terminal file manager |
 
-### 🎵 Audio & Multimedia
-- **MPD**: Music Player Daemon.
-- **RMPC**: A terminal-based MPD client.
-- **Cava**: Console-based audio spectrum visualizer.
-
-## 📂 Structure
-
-```text
-~/dotfiles/
-├── .config/          # Application configurations
-├── .local/           # Local binaries and share files
-├── .zshrc            # Zsh configuration
-├── .tmux.conf        # Tmux configuration
-└── ...               # Other config files
-```
+### 📦 Other
+| File / Dir | App |
+|---|---|
+| `~/.tmux.conf` | [tmux](https://github.com/tmux/tmux) — terminal multiplexer config |
+| `~/.tmux/` | tmux plugins & bundled themes |
+| `~/.config/nushell/` | [Nushell](https://nushell.sh/) — modern shell alternative |
+| `~/.config/bak/` | Backup configs |
+| `secrets/` | Private keys (gitignored) |
+| `lazyvim.json` | LazyVim session state |
+| `.gitignore` | Global gitignore entries |
+| `.gitmodules` | Submodule entries |
 
 ---
-*Feel free to explore and adapt these configs to your own setup!*
+
+## Getting Started
+
+To try these dotfiles on your machine:
+
+```bash
+# Clone the repo
+git clone https://github.com/jemabaris/dotfiles.git ~/.dotfiles
+
+# Symlink whatever you need
+ln -sf ~/.dotfiles/.zshrc ~/.zshrc
+ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/.dotfiles/.config ~/.config
+# ... and so on
+```
+
+> ⚠️ Your `secrets/` folder contains private keys and must stay local — it is excluded via `.gitignore`.
+
+## Notes
+
+- Primarily developed on **Arch Linux** with the **Hyprland** tiling WM.
+- Editor setup uses [LazyVim](https://github.com/LazyVim/LazyVim) (Neovim).
+- Most configs are opinionated but designed to be forkable and adjustable.
+- If something doesn't work on your setup out of the box, that's completely fine — tweak it! 💡
+
+## Stargazers ⭐
+
+If this saves you some time, a star would be nice. Pull requests for improvements are welcome!
+
+## License
+
+MIT — use it, modify it, break it, learn from it.
