@@ -54,6 +54,15 @@
     "max-length": 10
     //     "on-click": "htop"
   },
+
+  "temperature": {
+    // "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C "
+  },
+
   "custom/vram": {
     "exec": "/usr/bin/env sh -c 'v=$(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | tr \",\" \" \"); set -- $v; printf \"{\\\"text\\\":\\\"󰾲 %d%%\\\",\\\"tooltip\\\":\\\"VRAM: %s / %s MiB\\\"}\\n\" $(( $1 * 100 / $2 )) $1 $2'",
     "return-type": "json",
