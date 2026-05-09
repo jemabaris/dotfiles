@@ -51,19 +51,19 @@ window#waybar {
 
 #custom-vram {
   color: #c6a0f6;
+  padding: 0px 10px 0px 5px;
+  border-radius: 0px 0px 0px 0px;
+}
+
+#disk {
+  color: #68b0d6;
+  margin-left: -3px;
   padding: 0px 10px 0px 0px;
   border-radius: 0px 5px 5px 0px;
 }
 
 #custom-playerctl {
   padding: 0px 0px 0px 0px;
-}
-
-#disk {
-  color: #68b0d6;
-  margin-left: 15px;
-  padding: 0px 8px 0px 1px;
-  border-radius: 5px 5px 5px 5px;
 }
 
 #bluetooth {
@@ -163,12 +163,6 @@ window#waybar {
   background-color: #1e2030;
 }
 
-#custom-dot-alt {
-  color: #a5adcb;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
 #custom-clock-icon {
   color: #cad3f5;
   padding-left: 10px;
@@ -184,8 +178,8 @@ window#waybar {
   border-radius: 5px 5px 5px 5px;
 }
 #tray {
-  padding-left: 6px;
-  padding-right: 10px;
+  /*   padding-left: 2px; */
+  padding-right: 5px;
 }
 
 #custom-vpn.disconnected {

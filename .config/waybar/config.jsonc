@@ -16,11 +16,10 @@
     "memory",
     "temperature",
     "custom/vram",
+    "disk",
     "custom/dot",
     "mpris",
     "custom/playerctl",
-    "custom/dot",
-    "disk",
     "custom/dot",
     "bluetooth"
   ],
@@ -59,8 +58,8 @@
     // "thermal-zone": 2,
     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
-    "format-critical": "{temperatureC}°C ",
-    "format": "{temperatureC}°C "
+    "format-critical": " {temperatureC}°C",
+    "format": " {temperatureC}°C"
   },
 
   "custom/vram": {
@@ -109,7 +108,7 @@
 
   "disk": {
     "interval": 1,
-    "format": "<span color=\"#68b0d6\"> </span> {}%",
+    "format": "<span color=\"#68b0d6\"> 󰋊</span> {}%",
     "on-click": "filelight /",
     "on-click-right": "filelight /home/"
   },
@@ -199,7 +198,7 @@
 
   "tray": {
     "icon-size": 20,
-    "spacing": 8,
+    "spacing": 5,
     "show-passive-items": true,
     "ignored-items": ["protonvpn-app"]
   },
