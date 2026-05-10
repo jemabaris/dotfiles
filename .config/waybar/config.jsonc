@@ -1,4 +1,3 @@
-// Janis Waybar Config
 {
   "layer": "top",
   "exclusive": "false",
@@ -83,12 +82,12 @@
     "on-click-middle": "playerctl previous",
     "on-click-right": "playerctl next",
     "player-icons": {
-      "default": "<span foreground='#0ee8a0'>  </span>"
+      "default": "<span foreground='#0ee8a0'> </span>"
     },
     "status-icons": {
-      "paused": "<span foreground='#0ee8a0'> 󰏥</span>",
-      "playing": "<span foreground='#0ee8a0'> </span>",
-      "stopped": "<span foreground='#008a0'> </span>"
+      "paused": "<span foreground='#0ee8a0'>󰏥</span>",
+      "playing": "<span foreground='#0ee8a0'></span>",
+      "stopped": "<span foreground='#008a0'></span>"
     }
   },
 
