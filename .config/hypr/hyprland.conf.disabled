@@ -53,12 +53,13 @@ exec-once = openrgb --startminimized --profile Janis_OpenRGB_01
 exec-once = systemctl --user start hyprpolkitagent
 # exec-once = hyprctl plugin load /home/janis/Repos/Hyprspace/Hyprspace.so
 exec-once = systemctl --user start mpd
-#TODO
+#TODO:
 exec-once = [workspace 10 silent] tidal-hifi
 exec-once = keychain --clear --quiet
 exec-once = cursor-clip --daemon
 exec-once = hyprshell run
 exec-once = vicinae server
+#TODO:
 exec-once = solaar --window=hide
 
 # exec-once = $terminal
@@ -94,7 +95,7 @@ env = XCURSOR_SIZE,24
 env = XCURSOR_THEME, rose-pine-hyprcursor
 env = HYPRCURSOR_SIZE, 24
 env = HYPRCURSOR_THEME, rose-pine-hyprcursor
-#TODO
+#TODO:
 # env = XCURSOR_THEME, Bibata-Modern-Classic
 # XDG Specifications
 env = XDG_CURRENT_DESKTOP, Hyprland

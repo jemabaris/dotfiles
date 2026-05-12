@@ -53,6 +53,14 @@
     //     "on-click": "htop"
   },
 
+  "memory": {
+    "interval": 30,
+    "format": " {}% ",
+    //     "format-alt": " {used:0.1f}G",
+    "max-length": 10
+    //     "on-click-right": "htop"
+  },
+
   "temperature": {
     // "thermal-zone": 2,
     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -66,16 +74,9 @@
     "return-type": "json",
     "interval": 2
   },
-  "memory": {
-    "interval": 30,
-    "format": " {}% ",
-    //     "format-alt": " {used:0.1f}G",
-    "max-length": 10
-    //     "on-click-right": "htop"
-  },
 
   "mpris": {
-    "format": "{player_icon}  {title} - {artist}",
+    "format": "{player_icon} {title} - {artist}",
     "format-paused": "{status_icon}  {title} - {artist}",
     "max-length": 50,
     "dynamic-len": 10,
@@ -199,8 +200,13 @@
     "icon-size": 20,
     "spacing": 5,
     "show-passive-items": true,
-    "ignored-items": ["protonvpn-app"]
+    "ignored-items": [
+      "protonvpn-app",
+      "indicator_solaar",
+      "org.ayatana.NotificationItem.indicator_solaar"
+    ]
   },
+
   "custom/github": {
     "format": "  {}",
     "return-type": "json",

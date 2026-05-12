@@ -27,6 +27,7 @@ hl.on("hyprland.start", function()
     --     "hyprshell run",
     "vicinae server",
     "clipse -listen",
+    "solaar --window=hide",
     --         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP",
     --         "gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice",
     --         "hyprctl setcursor Bibata-Modern-Ice 24",
