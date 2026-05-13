@@ -6,7 +6,7 @@ local terminal = "kitty"
 local terminal_alt = "ghostty"
 local fileManager = "dolphin"
 local browser = "firefox"
-local browser_alt = "zen"
+local browser_alt = "zen-browser"
 
 -- Sets "SUPER" key as main modifier
 local mainMod = "SUPER"
@@ -167,10 +167,43 @@ hl.bind(mainMod .. " +  COMMA", hl.dsp.layout("move -col"))
 -- Move Scrolling layout with mouse wheel horizonstal
 hl.bind(mainMod .. " +  mouse_down", hl.dsp.layout("move +col"))
 hl.bind(mainMod .. " +  mouse_up", hl.dsp.layout("move -col"))
--- Move Scrolling layout with SUPER + mouse wheel vertical
-hl.bind(" +  mouse_right", hl.dsp.layout("move +col"))
-hl.bind(" +  mouse_left", hl.dsp.layout("move -col"))
+-- Guard to enable horizontal scrolling only on Scrolling layouts
+local function scrolling_move(direction)
+  local ws = hl.get_active_workspace()
+  if not ws or ws.tiled_layout ~= "scrolling" then
+    return
+  end
+  hl.dispatch(hl.dsp.layout("move " .. direction))
+end
+-- Move Scrolling layout with SUPER + mouse wheel horizontal
+hl.bind(" + mouse_right", function()
+  scrolling_move("+col")
+end)
+hl.bind(" + mouse_left", function()
+  scrolling_move("-col")
+end)
 
 -- Swap Scrolling layout
 hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"))
 hl.bind(mainMod .. " + CONTROL + PERIOD", hl.dsp.layout("swapcol r"))
+
+-- Toggle between Scrolling and Dwindle layouts
+hl.bind(mainMod .. " + SHIFT + T", function()
+  local ws = hl.get_active_workspace()
+  if not ws then
+    return
+  end
+
+  local new_layout = ws.tiled_layout == "dwindle" and "scrolling" or "dwindle"
+
+  hl.workspace_rule({
+    workspace = tostring(ws.id),
+    layout = new_layout,
+  })
+
+  hl.notification.create({
+    text = "󱂬    Workspace layout set to " .. new_layout,
+    duration = 3000,
+    icon = 5,
+  })
+end)
