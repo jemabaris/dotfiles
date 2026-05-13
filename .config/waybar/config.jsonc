@@ -32,8 +32,7 @@
     "custom/dot",
     "custom/vpn",
     "custom/dot",
-    "tray",
-    "clock",
+    "group/clock-tray",
     "custom/github",
     "custom/notifications"
   ],
@@ -192,6 +191,19 @@
     "format": " ",
     "tooltip": false
   },
+
+  "group/clock-tray": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 400,
+      "transition-left-to-right": false // slides out to the left
+    },
+    "modules": [
+      "clock", // always visible — this is the hover trigger
+      "tray" // hidden, slides out to the left on hover
+    ]
+  },
+
   "custom/clock-icon": {
     "format": ""
   },
