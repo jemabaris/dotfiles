@@ -19,15 +19,15 @@ hl.on("hyprland.start", function()
     "waybar",
     "swaync",
     "openrgb --startminimized --profile Janis_OpenRGB_01",
-    --     "wl-clip-persist --clipboard regular",
     "systemctl --user start hyprpolkitagent",
     "systemctl --user start mpd",
     "keychain --clear --quiet",
     "cursor-clip --daemon",
-    --     "hyprshell run",
+    "hyprshell run",
     "vicinae server",
     "clipse -listen",
     "solaar --window=hide",
+    --     "wl-clip-persist --clipboard regular",
     --         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP",
     --         "gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice",
     --         "hyprctl setcursor Bibata-Modern-Ice 24",
@@ -43,4 +43,8 @@ hl.on("hyprland.start", function()
   for _, cmd in ipairs(cmds) do
     hl.exec_cmd(cmd)
   end
+end)
+
+hl.on("hyprland.start", function()
+  hl.exec_cmd(" [workspace 10 silent] tidal-hifi")
 end)

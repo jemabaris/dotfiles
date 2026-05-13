@@ -1,3 +1,4 @@
 configuration {
-  font: env(ROFI_FONT, "JetBrainsMono Nerd Font Medium 12");
+//   font: env(ROFI_FONT, "JetBrainsMono Nerd Font Propo Medium 12");
+  font: "JetBrainsMono Nerd Font Propo Medium 12";
 }

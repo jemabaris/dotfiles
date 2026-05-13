@@ -55,8 +55,17 @@ hl.window_rule({
   match = { class = "Affinity Photo 2" },
   no_blur = true,
   no_dim = true,
-  opacity = 1.0,
+  opaque = true,
   focus_on_activate = true,
+  --   opacity = 1.0,
+})
+
+-- Clipse windowrules
+hl.window_rule({
+  name = "clipse",
+  match = { class = "clipse" },
+  float = true,
+  size = "600 700",
 })
 
 -- Example window rules that are useful

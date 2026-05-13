@@ -3,8 +3,8 @@
 ---------------------
 
 local terminal = "kitty"
+local terminal_alt = "ghostty"
 local fileManager = "dolphin"
-local menu = "rofi -show drun -theme $HOME/rofi-collection/theme.rasi"
 local browser = "firefox"
 local browser_alt = "zen"
 
@@ -15,13 +15,40 @@ local hyper = "SUPER + SHIFT + ALT + CONTROL"
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 -- Core Applications
-hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd(terminal_alt))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("vicinae toggle"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(browser_alt))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu)) --("~/.config/hypr/scripts/toggle-rofi.sh"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("~/.config/waybar/scripts/launch.sh"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("pkill waybar; waybar &")) -- Reload waybar
+hl.bind(mainMod .. " + CTRL + V", hl.dsp.exec_cmd("cursor-clip"))
+hl.bind(mainMod .. " + ALT + V", hl.dsp.exec_cmd("kitty --class clipse -e 'clipse'"))
+
+-- Hyprshot and Hyprpicker
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -an"))
+hl.bind("CONTROL + PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
+
+-- Toggle Rofi
+hl.bind(mainMod .. " + D", function()
+  local handle = io.popen("pgrep -x rofi")
+  if handle then
+    local result = handle:read("*a")
+    handle:close()
+    if result ~= "" then
+      os.execute("pkill -x rofi")
+      return
+    end
+  end
+  hl.exec_cmd("rofi -show drun -theme ~/rofi-collection/theme.rasi")
+end)
+
+-- Quake-style terminal
+hl.bind(
+  mainMod .. " + BACKSPACE",
+  hl.dsp.exec_cmd("kitten quick-access-terminal --config ~/.config/kitty/quick-access-terminal.conf")
+)
 
 -- Close Window
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -37,13 +64,20 @@ hl.bind(
 hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mainMod .. " + M", hl.dsp.layout("swapsplit")) -- dwindle only
 hl.bind(mainMod .. " + N", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + ALT + P", hl.dsp.window.pseudo())
 
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+-- Toggle window float and pin it in one lambda function
+hl.bind("SUPER + P", function()
+  hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+  hl.dispatch(hl.dsp.window.pin())
+end)
+
+-- Resize windows with mainMod + arrow keys
+hl.bind(mainMod .. " + left", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + right", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + up", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + down", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true })
 
 -- Move focus with mainMod + vim keys
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
@@ -52,28 +86,32 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod  + SHIFT + vim keys
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.focus({ workspace = "+1" }))
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ workspace = "-1" }))
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+-- Scroll through existing workspaces with SUPER + SHIFT + scroll
+hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.focus({ workspace = "+1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.focus({ workspace = "-1" }))
 
 -- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
+-- Move active window to a workspace with SUPER + SHIFT + [0-9]
+-- Move active window to a workspace silently with SUPER + ALT + SHIFT + [0-9]
 for i = 1, 10 do
   local key = i % 10 -- 10 maps to key 0
   hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
   hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+  hl.bind(mainMod .. " + ALT + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- Move active window silently to next/previous workspace with SUPER + CTRL + H/L
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.window.move({ workspace = "+1", follow = false }))
+hl.bind(mainMod .. " + CTRL + H", hl.dsp.window.move({ workspace = "-1", follow = false }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Move Scrolling layout with SUPER + PERIOD and COMMA
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -122,3 +160,17 @@ hl.bind(hyper .. " + Z", hl.dsp.exec_cmd("zeditor"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("vicinae 'vicinae://launch/wm/switch-windows'"))
 hl.bind(mainMod .. " + Slash", hl.dsp.exec_cmd("vicinae 'vicinae://launch/@brpaz/store.vicinae.brotab/tabs-list'"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("vicinae 'vicinae://launch/clipboard/history'"))
+
+-- Move Scrolling layout with SUPER + '.' and ','
+hl.bind(mainMod .. " +  PERIOD", hl.dsp.layout("move +col"))
+hl.bind(mainMod .. " +  COMMA", hl.dsp.layout("move -col"))
+-- Move Scrolling layout with mouse wheel horizonstal
+hl.bind(mainMod .. " +  mouse_down", hl.dsp.layout("move +col"))
+hl.bind(mainMod .. " +  mouse_up", hl.dsp.layout("move -col"))
+-- Move Scrolling layout with SUPER + mouse wheel vertical
+hl.bind(" +  mouse_right", hl.dsp.layout("move +col"))
+hl.bind(" +  mouse_left", hl.dsp.layout("move -col"))
+
+-- Swap Scrolling layout
+hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"))
+hl.bind(mainMod .. " + CONTROL + PERIOD", hl.dsp.layout("swapcol r"))

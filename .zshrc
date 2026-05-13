@@ -180,6 +180,10 @@ alias ts='sesh connect $(sesh list | fzf)' # Attach to existing session or creat
 # You can also tg (Mostly simmilar to ta but uses sesh and gum instead of fzf)
 # alias remotty= "kitty -o allow_remote_control=yes"
 
+# Hyprshutdown
+alias hypr-reboot="hyprshutdown -t 'Restarting...' --post-cmd 'reboot'"
+alias hypr-shutdown="hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'"
+
 # Add ChrisTitus Aliases
 alias cls='clear'
 alias mkdir='mkdir -p'

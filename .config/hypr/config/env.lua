@@ -33,9 +33,6 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("KDE_FULL_SESSION", "true")
 hl.env("KDE_SESSION_VERSION", "6")
 
--- Rofi Variables
-hl.env("ROFI_FONT", "JetBrainsMono Nerd Font Propo Medium 12")
-
 -- Hyprshot Variables
 hl.env("HYPRSHOT_DIR", "/home/janis/Pictures/Screenshots/")
 

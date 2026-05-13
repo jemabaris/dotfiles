@@ -9,7 +9,7 @@ require("config.keybindings")
 require("config.monitors")
 require("config.rules")
 require("config.lookandfeel")
-
+require("config.special")
 -----------------------
 ----- PERMISSIONS -----
 -----------------------
