@@ -186,24 +186,3 @@ end)
 -- Swap Scrolling layout
 hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"))
 hl.bind(mainMod .. " + CONTROL + PERIOD", hl.dsp.layout("swapcol r"))
-
--- Toggle between Scrolling and Dwindle layouts
-hl.bind(mainMod .. " + SHIFT + T", function()
-  local ws = hl.get_active_workspace()
-  if not ws then
-    return
-  end
-
-  local new_layout = ws.tiled_layout == "dwindle" and "scrolling" or "dwindle"
-
-  hl.workspace_rule({
-    workspace = tostring(ws.id),
-    layout = new_layout,
-  })
-
-  hl.notification.create({
-    text = "󱂬    Workspace layout set to " .. new_layout,
-    duration = 3000,
-    icon = 5,
-  })
-end)

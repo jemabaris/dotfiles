@@ -10,6 +10,7 @@ require("config.monitors")
 require("config.rules")
 require("config.lookandfeel")
 require("config.special")
+require("features.workspace_layout_toggle")
 -----------------------
 ----- PERMISSIONS -----
 -----------------------
