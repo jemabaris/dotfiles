@@ -1,6 +1,7 @@
 -- Refer to the wiki for more information.
 -- https://wiki.hypr.land/Configuring/Start/
 
+-- Source configuration files
 require("config.animations")
 require("config.autostart")
 require("config.config")
@@ -10,7 +11,10 @@ require("config.monitors")
 require("config.rules")
 require("config.lookandfeel")
 require("config.special")
+
+-- Source features (helper scripts)
 require("features.workspace_layout_toggle")
+
 -----------------------
 ----- PERMISSIONS -----
 -----------------------
@@ -65,5 +69,8 @@ hl.config({
 hl.config({
   scrolling = {
     fullscreen_on_one_column = true,
+    column_width = 0.333,
+    focus_fit_method = 0,
+    follow_focus = true,
   },
 })
