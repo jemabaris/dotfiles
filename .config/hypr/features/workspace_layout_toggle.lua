@@ -55,7 +55,7 @@ hl.bind(mainMod .. " + SHIFT + T", function()
   update_border_colors(new_layout)
 
   hl.notification.create({
-    text = "󱂬    Workspace layout set to " .. new_layout,
+    text = " 󱂬    Workspace layout set to " .. new_layout,
     duration = 3000,
     icon = 5,
   })

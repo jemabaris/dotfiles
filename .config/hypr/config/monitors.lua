@@ -3,6 +3,7 @@
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+
 -- LG Ultrawide
 hl.monitor({
   output = "DP-4",
@@ -21,11 +22,11 @@ hl.monitor({
   bitdepth = 10,
 })
 
--- Mi TV
-hl.monitor({
-  output = "HDMI-A-3",
-  disabled = true,
-  mode = "3840x2160@60",
-  position = "auto",
-  scale = "1",
-})
+-- Mi TV (keep it disabled by default, toggle with the "tv_toggle" feature)
+-- hl.monitor({
+--   output = "HDMI-A-3",
+--   disabled = true,
+--   mode = "3840x2160@60",
+--   position = "auto",
+--   scale = "1",
+-- })

@@ -89,9 +89,9 @@ hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.focus({ workspace = "+1" }))
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ workspace = "-1" }))
 
--- Scroll through existing workspaces with SUPER + SHIFT + scroll
-hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.focus({ workspace = "+1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.focus({ workspace = "-1" }))
+-- Scroll through existing workspaces with SUPER + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with SUPER + SHIFT + [0-9]
@@ -110,8 +110,6 @@ hl.bind(mainMod .. " + CTRL + H", hl.dsp.window.move({ workspace = "-1", follow 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
--- Move Scrolling layout with SUPER + PERIOD and COMMA
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -165,8 +163,8 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("vicinae 'vicinae://launch/clipboard/
 hl.bind(mainMod .. " +  PERIOD", hl.dsp.layout("move +col"))
 hl.bind(mainMod .. " +  COMMA", hl.dsp.layout("move -col"))
 -- Move Scrolling layout with mouse wheel horizonstal
-hl.bind(mainMod .. " +  mouse_down", hl.dsp.layout("move +col"))
-hl.bind(mainMod .. " +  mouse_up", hl.dsp.layout("move -col"))
+-- hl.bind(mainMod .. " +  mouse_down", hl.dsp.layout("move +col"))
+-- hl.bind(mainMod .. " +  mouse_up", hl.dsp.layout("move -col"))
 -- Guard to enable horizontal scrolling only on Scrolling layouts
 local function scrolling_move(direction)
   local ws = hl.get_active_workspace()
@@ -186,3 +184,8 @@ end)
 -- Swap Scrolling layout
 hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"))
 hl.bind(mainMod .. " + CONTROL + PERIOD", hl.dsp.layout("swapcol r"))
+
+-- Enable/disable Mi TV with SUPER + ALT +SHIFT + F5
+local toggle_tv = require("features.tv_toggle")
+
+hl.bind(mainMod .. " +ALT + SHIFT + F5", toggle_tv)

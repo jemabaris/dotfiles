@@ -64,7 +64,7 @@ export OPENAI_MODEL=qwen3.6:35b-a3b
 # Environment variables #
 #########################
 export PATH="$HOME/.config/emacs/bin:$PATH"
-
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 ##################
 # minimax neovim #
 ##################
