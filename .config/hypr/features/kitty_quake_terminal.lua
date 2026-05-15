@@ -8,7 +8,7 @@ local CONFIG = {
   cmd = "kitty --class kitty-quaketerminal",
   width_pct = 0.5,
   height_pct = 0.5,
-  y_pct = 0.05,
+  y_pct = 0.046,
   special_ws = "special:quaketerminal",
 }
 
@@ -114,6 +114,6 @@ hl.on("window.close", function(win)
   end
 end)
 
-hl.bind("SUPER + DELETE", toggle_quaketerminal, { description = "Toggle Kitty Quake Terminal" })
+hl.bind("SUPER + BACKSPACE", toggle_quaketerminal, { description = "Toggle Kitty Quake Terminal" })
 
 return { toggle = toggle_quaketerminal }

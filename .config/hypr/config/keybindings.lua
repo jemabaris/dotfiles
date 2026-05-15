@@ -44,11 +44,11 @@ hl.bind(mainMod .. " + D", function()
   hl.exec_cmd("rofi -show drun -theme ~/rofi-collection/theme.rasi")
 end)
 
--- Quake-style terminal
-hl.bind(
-  mainMod .. " + BACKSPACE",
-  hl.dsp.exec_cmd("kitten quick-access-terminal --config ~/.config/kitty/quick-access-terminal.conf")
-)
+-- Quake-style terminal DISABLED IN FAVOR OF THE "kitty_quake_terminal" FEATURE, SEE "features/kitty_quake_terminal.lua"
+-- hl.bind(
+--   mainMod .. " + BACKSPACE",
+--   hl.dsp.exec_cmd("kitten quick-access-terminal --config ~/.config/kitty/quick-access-terminal.conf")
+-- )
 
 -- Close Window with SUPER + Q or SUPER + middle mouse button
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())

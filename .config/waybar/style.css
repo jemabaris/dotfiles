@@ -141,6 +141,7 @@ window#waybar {
 
 #custom-tasks {
   color: #68b0d6;
+  margin-right: -2px;
 }
 
 #pulseaudio,
