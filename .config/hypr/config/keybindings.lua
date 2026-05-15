@@ -229,3 +229,14 @@ hl.define_submap("volume", function()
     end
   end, { release = true })
 end)
+
+-- Allows dragging Picture-in-Picture windows with middle mouse drag and without holding SUPER
+hl.bind("mouse:274", function()
+  local active = hl.get_active_window()
+  if active ~= nil and active.title == "Picture-in-Picture" then
+    hl.dispatch(hl.dsp.window.drag())
+  end
+end, {
+  mouse = true,
+  non_consuming = true,
+})
