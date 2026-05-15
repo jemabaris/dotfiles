@@ -24,7 +24,8 @@
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
-    "wlr/taskbar",
+    //     "wlr/taskbar",
+    "group/taskbar-tasks",
     "custom/dot",
     "pulseaudio",
     "custom/dot",
@@ -32,9 +33,10 @@
     "custom/dot",
     "custom/vpn",
     "custom/dot",
-    "group/clock-tray",
     "custom/github",
-    "custom/notifications"
+    "clock",
+    "group/notifications-tray"
+    //     "custom/notifications"
   ],
 
   "custom/launcher": {
@@ -91,20 +93,6 @@
     }
   },
 
-  //   "custom/playerctl": {
-  //     "format": "{icon} <span>{}</span>",
-  //     "return-type": "json",
-  //     "max-length": 55,
-  //     "exec": "playerctl metadata --format '{\"text\": \"{{title}} - {{artist}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-  //     "on-click": "playerctl play-pause",
-  //     "on-click-middle": "playerctl previous",
-  //     "on-click-right": "playerctl next",
-  //     "format-icons": {
-  //       "Playing": "<span foreground='#0ee8a0'>  </span>",
-  //       "Paused": "<span foreground='#0ee8a0'> 󰏥 </span>"
-  //     }
-  //   },
-
   "disk": {
     "interval": 1,
     "format": "<span color=\"#68b0d6\"> 󰋊</span> {}%",
@@ -158,6 +146,23 @@
     "on-click": "overskride"
   },
 
+  "group/taskbar-tasks": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 400,
+      "transition-left-to-right": false // slides out to the left
+    },
+    "modules": [
+      "custom/tasks", // always visible — this is the hover trigger
+      "wlr/taskbar" // hidden, slides out to the left on hover
+    ]
+  },
+
+  "custom/tasks": {
+    "tooltip": false,
+    "format": "<span size='18pt'>󰮫</span>"
+  },
+
   "wlr/taskbar": {
     "all-outputs": false,
     "format": "{icon}",
@@ -188,14 +193,14 @@
     "tooltip": false
   },
 
-  "group/clock-tray": {
+  "group/notifications-tray": {
     "orientation": "horizontal",
     "drawer": {
       "transition-duration": 400,
       "transition-left-to-right": false // slides out to the left
     },
     "modules": [
-      "clock", // always visible — this is the hover trigger
+      "custom/notifications", // always visible — this is the hover trigger
       "tray" // hidden, slides out to the left on hover
     ]
   },
@@ -263,9 +268,29 @@
   },
 
   "clock": {
-    "format": "<b>{:%I:%M %p }</b>",
-    "format-alt": "<b>{:%a.%d,%b}</b>",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "{:%I:%M %p }",
+    "format-alt": "{:%A, %d %B, %H:%M} ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#c6a0f6'><b>{}</b></span>",
+        "days": "<span color='#f4dbd6'><b>{}</b></span>",
+        "weeks": "<span color='#8aadf4'><b>W{}</b></span>",
+        "weekdays": "<span color='#aab1d3'><b>{}</b></span>",
+        "today": "<span color='#f6768e'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
 
   "custom/notifications": {

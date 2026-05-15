@@ -139,6 +139,10 @@ window#waybar {
   /*   background-color: #1e2030; */
 }
 
+#custom-tasks {
+  color: #68b0d6;
+}
+
 #pulseaudio,
 #custom-vpn,
 #network {
@@ -166,33 +170,28 @@ window#waybar {
   /*   background-color: #1e2030; */
 }
 
-#custom-clock-icon {
-  color: #cad3f5;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
 #custom-vpn.connected {
   color: #73daca;
   padding: 0px 10px 0px 10px;
   border-radius: 5px 5px 5px 5px;
-}
-#tray {
-  /*   padding-left: 2px; */
-  padding-right: 5px;
+  margin-right: 5px;
 }
 
 #custom-vpn.disconnected {
   color: #f38ba8;
   padding: 0px 10px 0px 10px;
   border-radius: 5px 5px 5px 5px;
+  margin-right: 5px;
+}
+
+#tray {
+  /*   padding-left: 2px; */
+  padding-right: 5px;
 }
 
 #clock {
   padding-left: 10px;
+  margin-left: -5px;
 }
 
 #custom-github {
