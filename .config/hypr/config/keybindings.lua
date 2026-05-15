@@ -51,9 +51,23 @@ end)
 -- )
 
 -- Close Window with SUPER + Q or SUPER + middle mouse button
-local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + mouse:274", hl.dsp.window.close(), { mouse = true })
+-- local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+-- hl.bind(mainMod .. " + mouse:274", hl.dsp.window.close(), { mouse = true })
 -- closeWindowBind:set_enabled(false)
+
+-- The above simple close binds are replaced with a custom function
+-- that checks if the active window is protected from closure before closing it, see "features/protected_close.lua"
+
+local protected_close = require("features.protected_close")
+
+hl.bind(mainMod .. " + Q", protected_close.close_unless_protected, {
+  description = "Close active window unless it is protected",
+})
+
+hl.bind(mainMod .. " + mouse:274", protected_close.close_unless_protected, {
+  mouse = true,
+  description = "Close active window with middle mouse unless it is protected",
+})
 
 -- Shutdown Hyprland
 hl.bind(
@@ -182,14 +196,20 @@ hl.bind(" + mouse_left", function()
   scrolling_move("-col")
 end)
 
--- Swap Scrolling layout
-hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"))
+-- Move left/right in Scrolling layout
+hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"), { description = "Move left in Scrolling Layout" })
 hl.bind(mainMod .. " + CONTROL + PERIOD", hl.dsp.layout("swapcol r"))
 
 -- Enable/disable Mi TV with SUPER + ALT +SHIFT + F5
-local toggle_tv = require("features.tv_toggle")
+-- local toggle_tv = require("features.tv_toggle")
+-- hl.bind(mainMod .. " +ALT + SHIFT + F5", toggle_tv)
 
-hl.bind(mainMod .. " +ALT + SHIFT + F5", toggle_tv)
+local tv_toggle = require("features.tv_toggle")
+
+tv_toggle.setup()
+hl.bind(mainMod .. " + F5", tv_toggle.toggle, {
+  description = "Toggle Mi TV monitor",
+})
 
 -----------------
 ---- SUBMAPS ----
