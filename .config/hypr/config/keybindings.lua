@@ -50,8 +50,9 @@ hl.bind(
   hl.dsp.exec_cmd("kitten quick-access-terminal --config ~/.config/kitty/quick-access-terminal.conf")
 )
 
--- Close Window
+-- Close Window with SUPER + Q or SUPER + middle mouse button
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + mouse:274", hl.dsp.window.close(), { mouse = true })
 -- closeWindowBind:set_enabled(false)
 
 -- Shutdown Hyprland
@@ -189,3 +190,42 @@ hl.bind(mainMod .. " + CONTROL + PERIOD", hl.dsp.layout("swapcol r"))
 local toggle_tv = require("features.tv_toggle")
 
 hl.bind(mainMod .. " +ALT + SHIFT + F5", toggle_tv)
+
+-----------------
+---- SUBMAPS ----
+-----------------
+
+-- Multimedia kyes submap, hold mouse 'forward' button and scroll or click to control volume and playback
+hl.config({ binds = { scroll_event_delay = 0 } })
+local used_media = false
+
+hl.bind("mouse:276", function()
+  used_media = false
+  hl.dispatch(hl.dsp.submap("volume"))
+end)
+
+hl.define_submap("volume", function()
+  hl.bind("mouse_up", function()
+    used_media = true
+    hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+  end)
+  hl.bind("mouse_down", function()
+    used_media = true
+    hl.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+")
+  end)
+  hl.bind("mouse:272", function()
+    used_media = true
+    hl.exec_cmd("playerctl play-pause")
+  end)
+  hl.bind("mouse:273", function()
+    used_media = true
+    hl.exec_cmd("playerctl next")
+  end)
+  hl.bind("mouse:276", function()
+    hl.dispatch(hl.dsp.submap("reset"))
+    if not used_media then
+      hl.dispatch(hl.dsp.send_key_state({ key = "mouse:276", state = "down", mods = "" }))
+      hl.dispatch(hl.dsp.send_key_state({ key = "mouse:276", state = "up", mods = "" }))
+    end
+  end, { release = true })
+end)

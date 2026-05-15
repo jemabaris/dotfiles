@@ -183,10 +183,6 @@
     }
   },
 
-  "custom/filler": {
-    "format": " ",
-    "tooltip": false
-  },
   "custom/dot": {
     "format": " ",
     "tooltip": false
@@ -202,10 +198,6 @@
       "clock", // always visible — this is the hover trigger
       "tray" // hidden, slides out to the left on hover
     ]
-  },
-
-  "custom/clock-icon": {
-    "format": ""
   },
 
   "tray": {

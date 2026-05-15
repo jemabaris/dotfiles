@@ -5,6 +5,7 @@
   font-family: JetBrainsMono Nerd Font Propo;
   font-weight: 700;
   font-size: 15px;
+  /*   background-color: #222436; */
   background-color: #1e2030;
 }
 
@@ -17,7 +18,7 @@ window#waybar {
   color: #00bfff;
   padding-left: 3px;
   padding-right: 12px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #cpu,
@@ -78,14 +79,14 @@ window#waybar {
   color: #8aadf4;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(2) label {
   color: #f6768e;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(3) label {
@@ -93,49 +94,49 @@ window#waybar {
   color: #aab1d3;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(4) label {
   color: #c6a0f6;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(5) label {
   color: #f4dbd6;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(6) label {
   color: #f5a97f;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(7) label {
   color: #8bd5ca;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(8) label {
   color: #68b0d6;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #workspaces button:nth-child(9) label {
   color: #aab1d3;
   font-size: 16px;
   margin: 0px 2px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #pulseaudio,
@@ -162,7 +163,7 @@ window#waybar {
 #custom-dot {
   color: #6e738d;
   padding-right: 10px;
-  background-color: #1e2030;
+  /*   background-color: #1e2030; */
 }
 
 #custom-clock-icon {
