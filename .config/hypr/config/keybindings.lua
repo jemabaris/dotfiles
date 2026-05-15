@@ -200,16 +200,11 @@ end)
 hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"), { description = "Move left in Scrolling Layout" })
 hl.bind(mainMod .. " + CONTROL + PERIOD", hl.dsp.layout("swapcol r"))
 
--- Enable/disable Mi TV with SUPER + ALT +SHIFT + F5
--- local toggle_tv = require("features.tv_toggle")
--- hl.bind(mainMod .. " +ALT + SHIFT + F5", toggle_tv)
+-- Enable Mi TV with SUPER + F5, disable with SUPER + F4
+local tv = require("features.tv_toggle")
 
-local tv_toggle = require("features.tv_toggle")
-
-tv_toggle.setup()
-hl.bind(mainMod .. " + F5", tv_toggle.toggle, {
-  description = "Toggle Mi TV monitor",
-})
+hl.bind(mainMod .. " + F4", tv.disable, { description = "Disable Mi TV" })
+hl.bind(mainMod .. " + F5", tv.enable, { description = "Enable Mi TV" })
 
 -----------------
 ---- SUBMAPS ----
