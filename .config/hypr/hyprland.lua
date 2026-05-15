@@ -10,10 +10,11 @@ require("config.keybindings")
 require("config.monitors")
 require("config.rules")
 require("config.lookandfeel")
-require("config.special")
+require("config.special_workspaces")
 
 -- Source features (helper scripts)
 require("features.workspace_layout_toggle")
+require("features.kitty_quake_terminal")
 
 -----------------------
 ----- PERMISSIONS -----

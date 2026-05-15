@@ -160,7 +160,7 @@
 
   "custom/tasks": {
     "tooltip": false,
-    "format": "<span size='18pt'>󰮫</span>"
+    "format": "<span size='18pt'>󰁑</span>"
   },
 
   "wlr/taskbar": {
