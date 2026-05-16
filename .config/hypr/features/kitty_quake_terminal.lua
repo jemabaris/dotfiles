@@ -114,6 +114,6 @@ hl.on("window.close", function(win)
   end
 end)
 
-hl.bind("SUPER + BACKSPACE", toggle_quaketerminal, { description = "Toggle Kitty Quake Terminal" })
+hl.bind("SUPER + BACKSPACE", toggle_quaketerminal, { description = "Toggle Kitty Quake terminal" })
 
 return { toggle = toggle_quaketerminal }
