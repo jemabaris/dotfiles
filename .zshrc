@@ -175,6 +175,7 @@ alias kitty-float=hyprctl dispatch exec "[workspace special:terminal silent] kit
 alias dash="gh dash"
 alias tidal='lumitide'
 alias hackernews='cle'
+alias bang='ddgr --gb --np'
 alias ts='sesh connect $(sesh list | fzf)' # Attach to existing session or create new one using sesh and fzf
 # You can also use ta (tmux attach) to attach to alrady runnings sessions with gum
 # You can also tg (Mostly simmilar to ta but uses sesh and gum instead of fzf)
