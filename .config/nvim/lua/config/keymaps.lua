@@ -27,7 +27,7 @@ vim.keymap.set("n", "<localleader>rl", function()
   vim.cmd("terminal lua " .. vim.fn.expand("%"))
 end, { desc = "Run Lua File" })
 
--- # Clear copilot suggestion with Esc if visible, otherwise preserve default Esc behavior
+-- Clear copilot suggestion with Esc if visible, otherwise preserve default Esc behavior
 -- vim.keymap.set("n", "<esc>", function()
 --     if not require("copilot-lsp.nes").clear() then
 --         -- fallback to other functionality
