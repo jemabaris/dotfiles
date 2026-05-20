@@ -1,8 +1,9 @@
 return {
   {
     "mrjones2014/smart-splits.nvim",
-    --     commit = "905b3f0d8cb80f5dcbd1b0927259647762c05822",
+    build = " ./kitty/install-kittens.bash",
     enabled = true,
+    lazy = false,
     opts = {
       ignored_buftypes = {
         "nofile",
