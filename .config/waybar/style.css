@@ -40,7 +40,7 @@ window#waybar {
 }
 
 #memory {
-  color: #c2e78c;
+  color: #c2e78c; /*#4fd6be;*/
   padding: 0px 10px 0px 0px;
   border-radius: 0px 0px 0px 0px;
 }

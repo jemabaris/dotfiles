@@ -33,7 +33,6 @@ hl.on("hyprland.start", function()
     --         "hyprctl setcursor Bibata-Modern-Ice 24",
     --         "wl-paste --type text --watch cliphist -max-items=35 store",
     --         "wl-paste --type image --watch cliphist -max-items=10 store",
-    --         "gammastep-indicator",
     --         "/usr/lib/xfce-polkit/xfce-polkit",
     --         "hypridle",
     --         "nwg-dock-hyprland -p left -d -w 5 -nolauncher -ml 5 -l top -hl bottom -i 40",
