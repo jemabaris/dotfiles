@@ -73,3 +73,33 @@ vim.keymap.set("n", "<leader>v", "ggVG", { desc = "Select all" })
 
 -- Keymap to copy all lines to system clipboard
 vim.keymap.set("n", "yc", ":%y+<CR>", { desc = "Yank all to clipboard" })
+
+-- Detach/reattach Copilot LSP from current buffer
+vim.keymap.set("n", "<leader>aD", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+    if client.name == "copilot" then
+      vim.lsp.buf_detach_client(bufnr, client.id)
+      print("Copilot detached")
+      return
+    end
+  end
+  print("copilot")
+end, { desc = "Detach Copilot" })
+
+vim.keymap.set("n", "<leader>aA", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  for _, client in ipairs(vim.lsp.get_clients()) do
+    if client.name == "copilot" then
+      vim.lsp.buf_attach_client(bufnr, client.id)
+      print("Copilot attached")
+      return
+    end
+  end
+  print("Copilot client not found")
+end, { desc = "Attach Copilot" })
+
+require("which-key").add({
+  { "<leader>aD", icon = { icon = " ", color = "orange" } },
+  { "<leader>aA", icon = { icon = " ", color = "orange" } },
+})
