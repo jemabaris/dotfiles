@@ -1,3 +1,6 @@
 [submodule ".tmux/plugins/tokyo-night-tmux"]
 	path = .tmux/plugins/tokyo-night-tmux
 	url = https://git::@github.com/janoamaral/tokyo-night-tmux
+[submodule ".tmux/plugins/smart-splits.nvim"]
+	path = .tmux/plugins/smart-splits.nvim
+	url = https://github.com/mrjones2014/smart-splits.nvim
