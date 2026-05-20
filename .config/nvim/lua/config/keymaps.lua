@@ -100,6 +100,6 @@ vim.keymap.set("n", "<leader>aA", function()
 end, { desc = "Attach Copilot" })
 
 require("which-key").add({
-  { "<leader>aD", icon = { icon = " ", color = "orange" } },
-  { "<leader>aA", icon = { icon = " ", color = "orange" } },
+  { "<leader>aD", icon = { icon = " ", color = "red" } },
+  { "<leader>aA", icon = { icon = " ", color = "green" } },
 })

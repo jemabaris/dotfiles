@@ -1,6 +1,6 @@
 return {
   "obsidian-nvim/obsidian.nvim",
-  enabled = true,
+  enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
   --   version = "*", -- use latest release, remove to use latest commit
   ---@module 'obsidian'
   ---@type obsidian.config
