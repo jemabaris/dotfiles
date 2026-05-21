@@ -2,6 +2,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- Smart-Splits.nvim multiplexer integration
+-- vim.g.smart_splits_multiplexer_integration = 'tmux'
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 -- Sync clipboard between OS and Neovim.
