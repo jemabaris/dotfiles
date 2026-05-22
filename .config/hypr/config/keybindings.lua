@@ -208,6 +208,11 @@ hl.bind(hyper .. " + Z", hl.dsp.exec_cmd("zeditor"), { description = "Launch Zed
 
 -- Vicinae Deeplink keybinds
 hl.bind(
+  mainMod .. " + A",
+  hl.dsp.exec_cmd("vicinae 'vicinae://launch/@rastsislaux/store.vicinae.pulseaudio/outputDevices'"),
+  { description = "Vicinae Switch Audio Output" }
+)
+hl.bind(
   mainMod .. " + Z",
   hl.dsp.exec_cmd("vicinae 'vicinae://launch/wm/switch-windows'"),
   { description = "Vicinae Switch Windows" }

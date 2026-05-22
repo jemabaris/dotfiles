@@ -126,16 +126,10 @@ eval "$(keychain --eval --quiet --nogui ~/.ssh/id_ed25519)"
 ###################################
 # tmux attach to existing session #
 ###################################
-# if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-#     exec tmux new-session -A -s Janis_tmux01
-# fi
-#
-#if [ -z "$TMUX" ]; then
-#  tmux attach-session -t last 2>/dev/null || tmux new-session
-#fi
 t() {
-  tmux attach 2>/dev/null || tmux new-session
+  tmux new-session -A -s janis_tmux01
 }
+
 
 # Attach to tmux session using sesh and gum
 tg() {
@@ -158,7 +152,7 @@ ta() {
     | gum filter \
         --placeholder "Search sessions..." \
         --prompt "  " \
-        --height 10 \
+        --height 15 \
     | awk '{print $1}')
 
   [[ -z "$session" ]] && return
