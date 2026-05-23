@@ -263,6 +263,14 @@ hl.bind(" + mouse_left", function()
   scrolling_dispatch(hl.dsp.layout("move -col"))
 end, { description = "Move left in Scrolling Layout with mouse" })
 
+-- Resize column with SUPER + '.' and ','
+hl.bind(mainMod .. " + SHIFT + PERIOD", function()
+  scrolling_dispatch(hl.dsp.layout("colresize +conf"))
+end, { description = "Increase column size in Scrolling layout" })
+hl.bind(mainMod .. " + SHIFT + COMMA", function()
+  scrolling_dispatch(hl.dsp.layout("colresize -conf"))
+end, { description = "Decrease column size in Scrolling layout" })
+
 -- Swap left/right in Scrolling layout
 hl.bind(mainMod .. " + CONTROL + COMMA", function()
   scrolling_dispatch(hl.dsp.layout("swapcol l"))
