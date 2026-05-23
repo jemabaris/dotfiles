@@ -271,6 +271,14 @@ hl.bind(mainMod .. " + SHIFT + COMMA", function()
   scrolling_dispatch(hl.dsp.layout("colresize -conf"))
 end, { description = "Decrease column size in Scrolling layout" })
 
+-- Expel/Consume window with CTRL + SHIFT + '.' and ','
+hl.bind(mainMod .. " + CTRL + SHIFT + PERIOD", function()
+  scrolling_dispatch(hl.dsp.layout("expel"))
+end, { description = "Moves the current window to a dedicated column" })
+hl.bind(mainMod .. " + CTRL + SHIFT + COMMA", function()
+  scrolling_dispatch(hl.dsp.layout("consume"))
+end, { description = "Moves the current window into the previous column" })
+
 -- Swap left/right in Scrolling layout
 hl.bind(mainMod .. " + CONTROL + COMMA", function()
   scrolling_dispatch(hl.dsp.layout("swapcol l"))
