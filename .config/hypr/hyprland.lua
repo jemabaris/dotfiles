@@ -1,6 +1,8 @@
 -- Refer to the wiki for more information.
 -- https://wiki.hypr.land/Configuring/Start/
 
+-- Package path for plugins in '~/Repos'
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/Repos/?.lua"
 -- Source configuration files
 require("config.animations")
 require("config.autostart")

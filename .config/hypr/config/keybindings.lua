@@ -228,41 +228,48 @@ hl.bind(
   { description = "Vicinae Clipboard History" }
 )
 
--- Move Scrolling layout with SUPER + '.' and ','
-hl.bind(mainMod .. " +  PERIOD", hl.dsp.layout("move +col"), { description = "Move right in Scrolling Layout" })
-hl.bind(mainMod .. " +  COMMA", hl.dsp.layout("move -col"), { description = "Move left in Scrolling Layout" })
--- Move Scrolling layout with mouse wheel horizonstal
--- hl.bind(mainMod .. " +  mouse_down", hl.dsp.layout("move +col"))
--- hl.bind(mainMod .. " +  mouse_up", hl.dsp.layout("move -col"))
--- Guard to enable horizontal scrolling only on Scrolling layouts
-local function scrolling_move(direction)
-  local ws = hl.get_active_workspace()
-  if not ws or ws.tiled_layout ~= "scrolling" then
-    return
-  end
-  hl.dispatch(hl.dsp.layout("move " .. direction))
-end
--- Move Scrolling layout with SUPER + mouse wheel horizontal
-hl.bind(" + mouse_right", function()
-  scrolling_move("+col")
-end, { description = "Move right in Scrolling Layout with mouse" })
-hl.bind(" + mouse_left", function()
-  scrolling_move("-col")
-end, { description = "Move left in Scrolling Layout with mouse" })
-
--- Move left/right in Scrolling layout
-hl.bind(mainMod .. " + CONTROL + COMMA", hl.dsp.layout("swapcol l"), { description = "Move left in Scrolling Layout" })
-hl.bind(
-  mainMod .. " + CONTROL + PERIOD",
-  hl.dsp.layout("swapcol r"),
-  { description = "Move right in Scrolling Layout" }
-)
-
 -- Enable Mi TV with SUPER + F5, disable with SUPER + F4
 local tv = require("features.tv_toggle")
 
 hl.bind(mainMod .. " + F4", tv.disable, { description = "Disable Mi TV" })
 hl.bind(mainMod .. " + F5", tv.enable, { description = "Enable Mi TV" })
+
+-------------------------------
+---- SCROLLING KEYBINDINGS ----
+-------------------------------
+
+-- Generic guard: only dispatch if active workspace uses Scrolling layout
+local function scrolling_dispatch(action)
+  local ws = hl.get_active_workspace()
+  if not ws or ws.tiled_layout ~= "scrolling" then
+    return
+  end
+  hl.dispatch(action)
+end
+
+-- Move in Scrolling layout with SUPER + '.' and ','
+hl.bind(mainMod .. " + PERIOD", function()
+  scrolling_dispatch(hl.dsp.layout("move +col"))
+end, { description = "Move right in Scrolling Layout" })
+hl.bind(mainMod .. " + COMMA", function()
+  scrolling_dispatch(hl.dsp.layout("move -col"))
+end, { description = "Move left in Scrolling Layout" })
+
+-- Move in Scrolling layout with SUPER + mouse wheel horizontal
+hl.bind(" + mouse_right", function()
+  scrolling_dispatch(hl.dsp.layout("move +col"))
+end, { description = "Move right in Scrolling Layout with mouse" })
+hl.bind(" + mouse_left", function()
+  scrolling_dispatch(hl.dsp.layout("move -col"))
+end, { description = "Move left in Scrolling Layout with mouse" })
+
+-- Swap left/right in Scrolling layout
+hl.bind(mainMod .. " + CONTROL + COMMA", function()
+  scrolling_dispatch(hl.dsp.layout("swapcol l"))
+end, { description = "Swap left in Scrolling Layout" })
+hl.bind(mainMod .. " + CONTROL + PERIOD", function()
+  scrolling_dispatch(hl.dsp.layout("swapcol r"))
+end, { description = "Swap right in Scrolling Layout" })
 
 -----------------
 ---- SUBMAPS ----
@@ -315,6 +322,8 @@ end, {
 })
 
 -- Hyprspace plugin
-hl.bind(mainMod .. " + X", function()
-  hl.exec_cmd("hyprctl dispatch overview:toggle")
-end, { description = "Toggle Hyprspace Overview" })
+local hyprspace = require("Hyprspace.Hyprspace")
+hl.unbind("SUPER + X")
+hl.bind("SUPER + X", function()
+  hyprspace.toggle()
+end)
