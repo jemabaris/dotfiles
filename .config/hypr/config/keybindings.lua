@@ -73,7 +73,7 @@ hl.bind(mainMod .. " + mouse:274", protected_close.close_unless_protected, {
 
 -- Shutdown Hyprland
 hl.bind(
-  mainMod .. " + F12",
+  mainMod .. " + SHIFT + F12",
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"),
   { description = "Log out of Hyprland" }
 )
@@ -313,3 +313,8 @@ end, {
   mouse = true,
   non_consuming = true,
 })
+
+-- Hyprspace plugin
+hl.bind(mainMod .. " + X", function()
+  hl.exec_cmd("hyprctl dispatch overview:toggle")
+end, { description = "Toggle Hyprspace Overview" })
