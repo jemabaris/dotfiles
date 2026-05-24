@@ -101,13 +101,15 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
-#Preferred editor for local and remote sessions
+# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='nvim'
 fi
 
+# Preferred visual editor
+export VISUAL='nvim'
 
 ############
 # Keychain #
@@ -227,22 +229,22 @@ alias cdbin='cd ~/.local/bin'
 alias bd='cd "$OLDPWD"'
 
 # eza (better ls)
-alias ls='eza --icons'
-alias lsd='eza --icons --group-directories-first' # long listing
-alias lt='eza --tree --icons --level=2' # tree view
-alias lta='eza --tree --icons' # tree view
-alias ll='eza -lah --color-scale=size --color-scale-mode=gradient --icons --group-directories-first' # long listing
-alias lf='eza -lah --icons --only-files' # files only
-alias ld='eza -lah --icons --only-dirs' # directories only
-alias lS='eza -lah --sort=size --color-scale=size --color-scale-mode=gradient --icons --group-directories-first' # sorted by size
-alias lg='eza -lah --git --icons' # git-aware listing # git-aware listing
+alias ls='eza --icons --hyperlink'
+alias lsd='eza --icons --group-directories-first --hyperlink' # long listing
+alias lt='eza --tree --icons --level=2 --hyperlink' # tree view
+alias lta='eza --tree --icons --hyperlink' # tree view
+alias ll='eza -lah --color-scale=size --color-scale-mode=gradient --icons --group-directories-first --hyperlink' # long listing
+alias lf='eza -lah --icons --only-files --hyperlink' # files only
+alias ld='eza -lah --icons --only-dirs --hyperlink' # directories only
+alias lS='eza -lah --sort=size --color-scale=size --color-scale-mode=gradient --icons --group-directories-first --hyperlink' # sorted by size
+alias lg='eza -lah --git --icons --hyperlink' # git-aware listing # git-aware listing
 
 # Alias the lf (list files) TUI file manager to lifi to avoid conflicts with lf alias for eza
 alias lifi='\lf'
 # Special ls Aliases
-alias ln='eza -lah --sort=modified --reverse --icons' # show newest files first
-alias lb='eza -lah --sort=size --icons' # show biggest files
-alias lr='eza -lahR --icons' # show everything recursively
+alias ln='eza -lah --sort=modified --reverse --icons --hyperlink' # show newest files first
+alias lb='eza -lah --sort=size --icons --hyperlink' # show biggest files
+alias lr='eza -lahR --icons --hyperlink' # show everything recursively
 
 # Search command line history
 alias h='history 0 | grep '

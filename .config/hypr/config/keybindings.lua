@@ -74,8 +74,19 @@ hl.bind(mainMod .. " + mouse:274", protected_close.close_unless_protected, {
 -- Shutdown Hyprland
 hl.bind(
   mainMod .. " + SHIFT + F12",
-  hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"),
+  hl.dsp.exec_cmd(
+    "$(echo -e 'hypr-reboot\nhypr-shutdown\n' | vicinae dmenu --height 200 --no-section --no-footer -p 'Reboot or Shutdown Hyprland')"
+  ),
   { description = "Log out of Hyprland" }
+)
+
+-- Vicinae Shutdown/Reboot dmenu
+hl.bind(
+  mainMod .. " + F10",
+  hl.dsp.exec_cmd(
+    "echo -e 'hypr-reboot\nhypr-shutdown\n' | vicinae dmenu --height 200 --no-section --no-footer -p 'Reboot or Shutdown Hyprland'"
+  ),
+  { description = "Viciane Power Menu" }
 )
 
 -- Window management

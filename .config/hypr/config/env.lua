@@ -6,6 +6,7 @@
 
 -- Program Variables
 hl.env("EDITOR", "nvim")
+hl.env("VISUAL", "nvim")
 hl.env("TERMINAL", "kitty")
 hl.env("FILEMANAGER", "dolphin")
 hl.env("BROWSER", "firefox")
