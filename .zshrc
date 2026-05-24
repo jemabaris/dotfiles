@@ -261,10 +261,11 @@ alias checkcommand="type -t"
 
 # Alias grep to ripgrep (if available)
 if command -v rg >/dev/null 2>&1; then
-  alias grep='rg --smart-case'
-  alias rg='rg --smart-case --hidden'
-  alias rgi='rg -i'
-  alias rgf='rg --files'
+  alias grep='rg --color=always --smart-case --hidden --hyperlink-format=kitty'
+  alias rg='rg --color=always --smart-case --hidden --hyperlink-format=kitty'
+  alias rg='rg --color=always --smart-case --hidden --hyperlink-format=kitty'
+  alias rgi='rg -i --color=always --hidden --hyperlink-format=kitty'
+  alias rgf='rg --files --color=always --hidden --hyperlink-format=kitty'
 else
   alias grep='grep --color=auto'
 fi
