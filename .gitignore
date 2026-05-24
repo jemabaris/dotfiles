@@ -3,6 +3,7 @@ lazyvim.json
 secrets/
 .config/nushell/config.nu.bak
 .config/nushell/env.nu.bak
+.config/nushell/history.txt
 *.bak*
 *.token
 .local/bin/mise

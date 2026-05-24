@@ -47,8 +47,12 @@ $env.config = {
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
-
 ##########
 # Zoxide #
 ##########
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
+
+###########################
+# Kitty Shell Integration #
+###########################
+$env.config.use_kitty_protocol = true
