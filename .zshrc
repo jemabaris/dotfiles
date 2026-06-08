@@ -286,7 +286,7 @@ eval "$(zoxide init --cmd cd zsh)"
 ###############
 # Source Mise #
 ###############
-eval "$(~/.local/bin/mise activate zsh)"
+eval "$(/home/janis/.local/bin/mise activate zsh)"
 
 ##############
 # Source fzf #
