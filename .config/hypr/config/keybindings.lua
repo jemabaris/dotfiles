@@ -349,8 +349,8 @@ end, {
 })
 
 -- Hyprspace plugin
-local hyprspace = require("Hyprspace.Hyprspace")
-hl.unbind("SUPER + X")
-hl.bind("SUPER + X", function()
-  hyprspace.toggle()
-end)
+-- local hyprspace = require("Hyprspace.Hyprspace")
+-- hl.unbind("SUPER + X")
+-- hl.bind("SUPER + X", function()
+--   hyprspace.toggle()
+-- end)

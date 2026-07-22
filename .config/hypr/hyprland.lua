@@ -2,7 +2,7 @@
 -- https://wiki.hypr.land/Configuring/Start/
 
 -- Package path for plugins in '~/Repos'
-package.path = package.path .. ";" .. os.getenv("HOME") .. "/Repos/?.lua"
+-- package.path = package.path .. ";" .. os.getenv("HOME") .. "/Repos/?.lua"
 -- Source configuration files
 require("config.animations")
 require("config.autostart")
@@ -15,7 +15,7 @@ require("config.lookandfeel")
 require("config.special_workspaces")
 
 -- Source plugins
-require("config.plugins")
+-- require("config.plugins")
 
 -- Source features (helper scripts)
 require("features.workspace_layout_toggle")

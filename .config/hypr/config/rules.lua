@@ -60,6 +60,17 @@ hl.window_rule({
   --   opacity = 1.0,
 })
 
+--  Houdini windowrules
+hl.window_rule({
+  name = "houdini",
+  match = { class = "Houdini FX" },
+  no_blur = true,
+  no_dim = true,
+  opaque = true,
+  focus_on_activate = true,
+  --   opacity = 1.0,
+})
+
 -- Clipse windowrules
 hl.window_rule({
   name = "clipse",
