@@ -79,6 +79,6 @@ hl.config({
     focus_fit_method = 0,
     follow_focus = false,
     wrap_focus = true,
-    explicit_column_widths = "0.25, 0.333, 0.5, 0.667",
+    --     explicit_column_widths = "0.25, 0.333, 0.5, 0.667",
   },
 })
